@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="Deprecated">
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="activities.estgf.ipp.pt.projetocmu.CadastroActivity"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:src="@drawable/estgf"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="23dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10sp"
+            android:text="Cadastro"/>
+
+        <!-- LineyarLayout do Nome-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10sp"
+                android:layout_marginLeft="10sp"
+                android:textSize="18sp"
+                android:text="Nome: " />
+            <EditText
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:id="@+id/cadastro_nome_editText"
+                android:hint="Digite o nome"/>
+        </LinearLayout>
+
+        <!-- LineyarLayout do Email-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp"
+                android:text="E-mail: " />
+            <EditText
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:id="@+id/cadastro_email_editText"
+                android:hint="Digite o email"/>
+        </LinearLayout>
+
+        <!-- LineyarLayout do NIF-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp"
+                android:text=" NIF :   " />
+            <EditText
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:id="@+id/cadastro_nif_editText"
+                android:hint="Digite o NIF da empresa"/>
+        </LinearLayout>
+
+        <!-- LineyarLayout da Senha-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp"
+                android:text="Senha: " />
+            <EditText
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:password="true"
+                android:id="@+id/cadastro_senha_editText"
+                android:hint="Digite a senha"/>
+        </LinearLayout>
+
+        <!-- LineyarLayout do ConfirmarSenha -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp"
+                android:text="Confirmar: " />
+
+            <EditText
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:password="true"
+                android:id="@+id/cadastro_confirmaSenha_editText"
+                android:hint="Digite a senha novamente"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_height="match_parent"
+            android:layout_width="220sp"
+            android:layout_marginTop="13sp"
+            android:id="@+id/cadastro_botaoCadastro_button"
+            android:text="Cadastrar"/>
+
+    </LinearLayout>
+</ScrollView>

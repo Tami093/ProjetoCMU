@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="Deprecated">
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="activities.estgf.ipp.pt.projetocmu.LoginActivity"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/estgf"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_marginTop="13dp"
+            android:gravity="center_horizontal"
+            android:text="Portal de Estagio"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:layout_width="200sp"
+                android:layout_height="match_parent"
+                android:textSize="17dp"
+                android:paddingTop="25dp"
+                android:id="@+id/login_login_editText"
+                android:hint="E-Mail / Utilizador"/>
+
+            <EditText
+                android:layout_width="200sp"
+                android:layout_height="match_parent"
+                android:textSize="17dp"
+                android:paddingTop="10dp"
+                android:password="true"
+                android:id="@+id/login_senha_editText"
+                android:hint="Senha"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/login_radioGroup_radioGroup">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="35sp"
+                        android:id="@+id/login_aluno_radio"
+                        android:text="Aluno"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/login_empresa_radio"
+                        android:text="Empresa" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <Button
+                android:layout_marginTop="15dp"
+                android:layout_width="190dp"
+                android:layout_height="match_parent"
+                android:id="@+id/login_botaoLogin_button"
+                android:text="Entrar"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:id="@+id/login_botaoEsqueceuSenha_button"
+                android:layout_marginTop="8dp"
+                android:text="Esqueceu a senha?"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="----------------OU----------------" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:textColor="@android:color/black"
+                android:id="@+id/login_botaoRegistrar_button"
+                android:text="Registra-se"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

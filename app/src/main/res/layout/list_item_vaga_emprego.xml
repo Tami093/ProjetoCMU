@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:id="@+id/listItem_nomeDaVagaEmprego_textview"
+        android:text="Nome da Vaga" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2sp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_height="20dp"
+            android:layout_width="20sp"
+            android:src="@drawable/ic_work_black_24dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:layout_marginTop="2sp"
+            android:layout_marginLeft="4sp"
+            android:id="@+id/listItem_nomeEmpresa_textView"
+            android:text="Nome da Empresa"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2sp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_height="20dp"
+            android:layout_width="20sp"
+            android:src="@drawable/ic_place_black_24dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:layout_marginTop="2sp"
+            android:layout_marginLeft="4sp"
+            android:id="@+id/listItem_localDoTrabalho_textView"
+            android:text="Localidade do Trabalho"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2sp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_height="20dp"
+            android:layout_width="20sp"
+            android:src="@drawable/ic_attach_money_black_24dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:layout_marginTop="2sp"
+            android:layout_marginLeft="4sp"
+            android:id="@+id/listItem_quantidadeSalario_textView"
+            android:text="Quantidade de Salario"/>
+    </LinearLayout>>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Candidatar"/>
+
+</LinearLayout>
