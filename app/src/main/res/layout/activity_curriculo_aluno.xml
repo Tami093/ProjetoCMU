@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="activities.estgf.ipp.pt.projetocmu.CurriculoAlunoActivity"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="2sp"
+        android:layout_marginLeft="2sp">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="Nome: "/>
+        <EditText
+            android:layout_width="280sp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:id="@+id/curriculo_nomeAluno_editText"
+            android:hint="Digite o nome"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="2sp"
+        android:layout_marginLeft="2sp">
+         <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="Aniversario: "/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="13sp"
+            android:id="@+id/curriculo_dataAniversario_textView"
+            android:hint="Clique para selecionar a data de Aniversario" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="2sp"
+        android:layout_marginLeft="2sp">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="Telefone: "/>
+        <EditText
+            android:layout_width="260sp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:id="@+id/curriculo_telefoneAluno_editText"
+            android:hint="Digite o telefone"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="2sp"
+        android:layout_marginLeft="2sp">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="E-mail: "/>
+        <EditText
+            android:layout_width="276sp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:id="@+id/curriculo_emailAluno_editText"
+            android:hint="Digite o email"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="2sp"
+        android:layout_marginLeft="2sp">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text="Endereco: "/>
+        <EditText
+            android:layout_width="257sp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:id="@+id/curriculo_enderecoAluno_editText"
+            android:hint="Digite o endereco"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:gravity="center_horizontal">
+        <Button
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:id="@+id/curriculo_botaoSalvar_button"
+            android:text="Salvar" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -89,19 +89,23 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:textColor="@android:color/black"
-                android:id="@+id/login_botaoEsqueceuSenha_button"
                 android:layout_marginTop="8dp"
+                android:visibility="invisible"
+                android:id="@+id/login_botaoEsqueceuSenha_button"
                 android:text="Esqueceu a senha?"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:visibility="invisible"
+                android:id="@+id/login_textoSeparadorOU_textview"
                 android:text="----------------OU----------------" />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:textColor="@android:color/black"
+                android:visibility="invisible"
                 android:id="@+id/login_botaoRegistrar_button"
                 android:text="Registra-se"/>
         </LinearLayout>

@@ -1,4 +1,5 @@
 package activities.estgf.ipp.pt.projetocmu;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -7,6 +8,8 @@ import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import java.util.List;
 import java.util.Vector;
 import activities.estgf.ipp.pt.projetocmu.adapter.PageAdapter;
@@ -62,5 +65,31 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
         });
         */
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_vagas_emprego, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menuVagas_curriculo_item:
+                Toast.makeText(VagasDeEmpregoActivity.this, "Tocou em curriculo", Toast.LENGTH_SHORT);
+                Intent vaiParaCurriculo = new Intent(this, CurriculoAlunoActivity.class);
+                startActivity(vaiParaCurriculo);
+                break;
+            /*
+            case R.id.menu_baixarProvas:
+                Intent vaiParaProvas = new Intent(this, ProvasActivity.class);
+                startActivity(vaiParaProvas);
+                break;
+            */
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

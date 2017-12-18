@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ProjetoCMU.iml" filepath="$PROJECT_DIR$/.idea/ProjetoCMU.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProjetoCMU.iml" filepath="$PROJECT_DIR$/ProjetoCMU.iml" />
+      <module fileurl="file://C:\Users\VHugo\AndroidStudioProjects\ProjetoCMU\.idea\ProjetoCMU.iml" filepath="C:\Users\VHugo\AndroidStudioProjects\ProjetoCMU\.idea\ProjetoCMU.iml" />
       <module fileurl="file://C:\Users\Tamires\AndroidStudioProjects\ProjetoCMU\ProjetoCMU.iml" filepath="C:\Users\Tamires\AndroidStudioProjects\ProjetoCMU\ProjetoCMU.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Tamires\AndroidStudioProjects\ProjetoCMU\app\app.iml" filepath="C:\Users\Tamires\AndroidStudioProjects\ProjetoCMU\app\app.iml" />
     </modules>
   </component>
 </project>
