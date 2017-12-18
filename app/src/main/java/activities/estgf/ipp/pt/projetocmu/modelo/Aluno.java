@@ -15,4 +15,11 @@ public class Aluno implements Serializable{
     private String cursos;
 
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }
