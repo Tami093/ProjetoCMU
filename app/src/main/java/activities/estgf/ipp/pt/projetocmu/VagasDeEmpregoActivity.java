@@ -8,13 +8,17 @@ import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import activities.estgf.ipp.pt.projetocmu.adapter.PageAdapter;
+import activities.estgf.ipp.pt.projetocmu.adapter.VagasEmpregoAdapter;
 import activities.estgf.ipp.pt.projetocmu.fragments.Fragment1VagasDeEmprego;
 import activities.estgf.ipp.pt.projetocmu.fragments.Fragment2VagasDeEmprego;
+import activities.estgf.ipp.pt.projetocmu.modelo.Vaga;
 
 public class VagasDeEmpregoActivity extends AppCompatActivity {
 
@@ -22,7 +26,6 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vagas_de_emprego);
-
 
         List<Fragment> fragments = new Vector<>();
         fragments.add(Fragment.instantiate(this, Fragment1VagasDeEmprego.class.getName()));
@@ -41,15 +44,11 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
             public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
                 pager.setCurrentItem(tab.getPosition());
             }
-
             @Override
             public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
             }
-
             @Override
             public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
             }
         };
 
@@ -64,7 +63,6 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
             }
         });
         */
-
     }
 
 

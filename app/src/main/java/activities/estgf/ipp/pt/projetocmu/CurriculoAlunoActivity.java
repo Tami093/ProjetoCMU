@@ -34,6 +34,8 @@ public class CurriculoAlunoActivity extends AppCompatActivity {
 
     }
 
+
+
     //Parte da data de Aniversario
     public void dataDeAniversario(){
         dataAniversario = (TextView) findViewById(R.id.curriculo_dataAniversario_textView);

@@ -1,6 +1,7 @@
 package activities.estgf.ipp.pt.projetocmu.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,12 +32,11 @@ public class VagasEmpregoAdapter extends BaseAdapter {
     public Object getItem(int position) { return vagas.get(position); }
 
     @Override
-    public long getItemId(int position) {
-        return vagas.get(position).getId();
-    }
+    public long getItemId(int position) { return vagas.get(position).getId(); }
 
     @Override
     public View getView(int position, View views, ViewGroup viewGroup) {
+
         Vaga vaga = vagas.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);
