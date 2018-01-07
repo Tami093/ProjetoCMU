@@ -9,7 +9,7 @@ public class Vaga implements Serializable {
     private String tipoVaga;
     private String salario;
     private String localTrabalho;
-    private boolean vagaAtiva;
+    private String vagaAtiva;
 
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
@@ -29,9 +29,6 @@ public class Vaga implements Serializable {
     public String getLocalTrabalho() { return localTrabalho; }
     public void setLocalTrabalho(String localTrabalho) { this.localTrabalho = localTrabalho; }
 
-    public boolean isVagaAtiva() { return vagaAtiva; }
-    public void setVagaAtiva(boolean vagaAtiva) { this.vagaAtiva = vagaAtiva; }
-
-
-
+    public String getVagaAtiva() { return vagaAtiva; }
+    public void setVagaAtiva(String vagaAtiva) { this.vagaAtiva = vagaAtiva; }
 }

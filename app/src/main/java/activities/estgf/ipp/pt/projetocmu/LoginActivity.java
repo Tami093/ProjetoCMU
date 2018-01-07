@@ -1,6 +1,7 @@
 package activities.estgf.ipp.pt.projetocmu;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.logging.Logger;
+import android.database.sqlite.*;
+import android.database.*;
+
+//import java.util.logging.Logger;
+
+import activities.estgf.ipp.pt.projetocmu.dao.HelperDAO;
+import activities.estgf.ipp.pt.projetocmu.dao.VagaDAO;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,11 +29,34 @@ public class LoginActivity extends AppCompatActivity {
     private Button botaoFazerLogin, botaoEsqueceuSenha, botaoRegistrar;
 
 
+    private HelperDAO dao;
+    private SQLiteDatabase conn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
+        try {
+            dao = new HelperDAO(this);
+            conn = dao.getReadableDatabase();
+
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            dlg.setMessage("Conexao criada com sucesso!");
+            dlg.setNeutralButton("OK",null);
+            dlg.show();
+        }
+        catch (SQLException ex){
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            dlg.setMessage("Erro ao criar o Banco: " + ex.getMessage());
+            dlg.setNeutralButton("OK",null);
+            dlg.show();
+        }
+
+
 
         login = (EditText) findViewById(R.id.login_login_editText);
         senha = (EditText) findViewById(R.id.login_senha_editText);
@@ -93,9 +123,11 @@ public class LoginActivity extends AppCompatActivity {
         botaoEsqueceuSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent vaiParaEsqueceuSenha = new Intent(LoginActivity.this, EsqueceuSenhaActivity.class);
-                startActivity(vaiParaEsqueceuSenha);
+                //Intent vaiParaEsqueceuSenha = new Intent(LoginActivity.this, EsqueceuSenhaActivity.class);
+                //startActivity(vaiParaEsqueceuSenha);
                 //Toast.makeText(LoginActivity.this, "Clicou Botao Esqueceu a senha", Toast.LENGTH_LONG).show();
+                VagaDAO x = new VagaDAO(LoginActivity.this);
+                x.insereVagasAutomaticoAoCriarBanco();
             }
         });
 

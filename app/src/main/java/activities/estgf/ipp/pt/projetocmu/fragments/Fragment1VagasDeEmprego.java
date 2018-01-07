@@ -12,12 +12,12 @@ import java.util.List;
 
 import activities.estgf.ipp.pt.projetocmu.R;
 import activities.estgf.ipp.pt.projetocmu.adapter.VagasEmpregoAdapter;
+import activities.estgf.ipp.pt.projetocmu.dao.VagaDAO;
 import activities.estgf.ipp.pt.projetocmu.modelo.Vaga;
 
 public class Fragment1VagasDeEmprego extends Fragment{
 
     private ListView listaVagas;
-    private List<Vaga> vagas;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,7 +26,8 @@ public class Fragment1VagasDeEmprego extends Fragment{
         listaVagas = (ListView) viewFragVaga.findViewById(R.id.fragment1_listaEmpregos_listView);
 
         //Cria um monte de vagas
-        testeVagas();
+        VagaDAO dao = new VagaDAO(container.getContext());
+        List<Vaga> vagas = dao.buscaVagas();
 
         //Infla o layout com as vagas
         VagasEmpregoAdapter adapterEmprego  = new VagasEmpregoAdapter(container.getContext() ,vagas);
@@ -41,7 +42,7 @@ public class Fragment1VagasDeEmprego extends Fragment{
 
 
 
-
+    /*
     //Criar 5 vagas para teste no app
     private void testeVagas() {
         vagas = new ArrayList<Vaga>();
@@ -57,7 +58,7 @@ public class Fragment1VagasDeEmprego extends Fragment{
         v1.setSalario("1000 Euros");
         v1.setNomeVaga("Vaga Para Caixa");
         v1.setTipoVaga("Estagiario");
-        v1.setVagaAtiva(true);
+        v1.setVagaAtiva("true");
         vagas.add(v1);
 
         v2.setId(2);
@@ -66,7 +67,7 @@ public class Fragment1VagasDeEmprego extends Fragment{
         v2.setSalario("753 Euros");
         v2.setNomeVaga("Vaga Para Garconete");
         v2.setTipoVaga("Efetivo");
-        v2.setVagaAtiva(true);
+        v2.setVagaAtiva("true");
         vagas.add(v2);
 
         v3.setId(3);
@@ -75,7 +76,7 @@ public class Fragment1VagasDeEmprego extends Fragment{
         v3.setSalario("1254 Euros");
         v3.setNomeVaga("Vaga para cortador de grama");
         v3.setTipoVaga("Efetivado");
-        v3.setVagaAtiva(true);
+        v3.setVagaAtiva("true");
         vagas.add(v3);
 
         v4.setId(4);
@@ -84,7 +85,7 @@ public class Fragment1VagasDeEmprego extends Fragment{
         v4.setSalario("850 Euros");
         v4.setNomeVaga("Vaga Para TI");
         v4.setTipoVaga("Estagiario");
-        v4.setVagaAtiva(true);
+        v4.setVagaAtiva("true");
         vagas.add(v4);
 
         v5.setId(5);
@@ -93,7 +94,8 @@ public class Fragment1VagasDeEmprego extends Fragment{
         v5.setSalario("1739 Euros");
         v5.setNomeVaga("Pasteleiro");
         v5.setTipoVaga("Efetivado");
-        v5.setVagaAtiva(true);
+        v5.setVagaAtiva("true");
         vagas.add(v5);
     }
+    */
 }
