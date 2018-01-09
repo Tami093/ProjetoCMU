@@ -39,13 +39,15 @@ public class VagaDAO {
         c.close();
         return vagas;
     }
+
+    /*
     public void insereVagasAutomaticoAoCriarBanco() {
         HelperDAO dao = new HelperDAO(contexto);
 
         List<Vaga> vagas = new ArrayList<Vaga>();
 
         Vaga v1 = new Vaga();
-        v1.setLocalTrabalho("Rua Joao Nogueira");
+        v1.setLocalTrabalho("Rua de Santa Quiteria 15");
         v1.setNomeEmpresa("Continente ");
         v1.setSalario("1000 Euros");
         v1.setNomeVaga("Vaga Para Caixa");
@@ -54,7 +56,7 @@ public class VagaDAO {
         vagas.add(v1);
 
         Vaga v2 = new Vaga();
-        v2.setLocalTrabalho("Rua da Santa Quiteria");
+        v2.setLocalTrabalho("Rua de Belem 15");
         v2.setNomeEmpresa("Quiosque legal");
         v2.setSalario("753 Euros");
         v2.setNomeVaga("Vaga Para Garconete");
@@ -63,7 +65,7 @@ public class VagaDAO {
         vagas.add(v2);
 
         Vaga v3 = new Vaga();
-        v3.setLocalTrabalho("Rua do Estadio");
+        v3.setLocalTrabalho("Rua Professor Joaquim Barros Leite 100");
         v3.setNomeEmpresa("Campo Futebol Felgueiras");
         v3.setSalario("1254 Euros");
         v3.setNomeVaga("Vaga para cortador de grama");
@@ -72,7 +74,7 @@ public class VagaDAO {
         vagas.add(v3);
 
         Vaga v4 = new Vaga();
-        v4.setLocalTrabalho("ESTG Faculdade");
+        v4.setLocalTrabalho("Rua do Curral 156");
         v4.setNomeEmpresa("ESTG");
         v4.setSalario("850 Euros");
         v4.setNomeVaga("Vaga Para TI");
@@ -80,7 +82,7 @@ public class VagaDAO {
         v4.setVagaAtiva("true");
 
         Vaga v5 = new Vaga();
-        v5.setLocalTrabalho("Rua de Sao Jose");
+        v5.setLocalTrabalho("Avenida Doutor Magalhães Lemos 435");
         v5.setNomeEmpresa("Pastelarias Fixe");
         v5.setSalario("1739 Euros");
         v5.setNomeVaga("Pasteleiro");
@@ -100,6 +102,7 @@ public class VagaDAO {
 
             dao.getWritableDatabase().insert("Vagas", null, dados);
         }
-
+        dao.close();
     }
+    */
 }

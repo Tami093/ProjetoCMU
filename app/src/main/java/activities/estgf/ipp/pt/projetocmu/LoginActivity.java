@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +22,8 @@ import android.database.*;
 
 import activities.estgf.ipp.pt.projetocmu.dao.HelperDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.VagaDAO;
+import activities.estgf.ipp.pt.projetocmu.fragments.Fragment2MapaDoVagasDeEmprego;
+import activities.estgf.ipp.pt.projetocmu.fragments.Fragment2VagasDeEmprego;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText login, senha;
     private RadioGroup radioGroupAlunoEmpresa;
     private RadioButton alunoRadio, empresaRadio;
-    private Button botaoFazerLogin, botaoEsqueceuSenha, botaoRegistrar;
+    private Button botaoFazerLogin, botaoEsqueceuSenha, botaoRegistrar, inserirDadosBanco;
 
 
     private HelperDAO dao;
@@ -43,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
         try {
             dao = new HelperDAO(this);
             conn = dao.getReadableDatabase();
-
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
             dlg.setMessage("Conexao criada com sucesso!");
             dlg.setNeutralButton("OK",null);
@@ -86,7 +90,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //Botao Login
-
         botaoFazerLogin = (Button) findViewById(R.id.login_botaoLogin_button);
         botaoFazerLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +128,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent vaiParaEsqueceuSenha = new Intent(LoginActivity.this, EsqueceuSenhaActivity.class);
                 startActivity(vaiParaEsqueceuSenha);
-                Toast.makeText(LoginActivity.this, "Clicou Botao Esqueceu a senha", Toast.LENGTH_LONG).show();
+                //Toast.makeText(LoginActivity.this, "Clicou Botao Esqueceu a senha", Toast.LENGTH_LONG).show();
+                //Intent vaiParaMapa = new Intent(LoginActivity.this, Fragment2VagasDeEmprego.class);
+                //startActivity(vaiParaMapa);
             }
         });
 
@@ -139,5 +144,25 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /*
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_login_activity, menu);
+        return true;
+    }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menuLogin_addicionarBanco:
+                //Toast.makeText(LoginActivity.this, "Tocou em BancoDados", Toast.LENGTH_LONG).show();
+                VagaDAO x = new VagaDAO(LoginActivity.this);
+                x.insereVagasAutomaticoAoCriarBanco();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    */
 }
