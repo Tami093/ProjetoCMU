@@ -13,28 +13,24 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
+import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
+
 public class CurriculoAlunoActivity extends AppCompatActivity {
 
     private TextView dataAniversario;
-    private EditText nome, email, endereco, telefone;
+    private EditText nome, email, endereco;
     private Button botaoSalvar;
-
     private DatePickerDialog.OnDateSetListener dataAniversarioListener;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_curriculo_aluno);
-
-
+        EditText telefone =(EditText) findViewById(R.id.curriculo_telefoneAluno_editText);
+        MaskEditTextChangedListener maskTEL = new MaskEditTextChangedListener("(###) ###-###-###", telefone);
+        telefone.addTextChangedListener(maskTEL);
         dataDeAniversario();
-
     }
-
-
 
     //Parte da data de Aniversario
     public void dataDeAniversario(){

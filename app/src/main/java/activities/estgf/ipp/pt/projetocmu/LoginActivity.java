@@ -123,11 +123,9 @@ public class LoginActivity extends AppCompatActivity {
         botaoEsqueceuSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent vaiParaEsqueceuSenha = new Intent(LoginActivity.this, EsqueceuSenhaActivity.class);
-                //startActivity(vaiParaEsqueceuSenha);
-                //Toast.makeText(LoginActivity.this, "Clicou Botao Esqueceu a senha", Toast.LENGTH_LONG).show();
-                VagaDAO x = new VagaDAO(LoginActivity.this);
-                x.insereVagasAutomaticoAoCriarBanco();
+                Intent vaiParaEsqueceuSenha = new Intent(LoginActivity.this, EsqueceuSenhaActivity.class);
+                startActivity(vaiParaEsqueceuSenha);
+                Toast.makeText(LoginActivity.this, "Clicou Botao Esqueceu a senha", Toast.LENGTH_LONG).show();
             }
         });
 

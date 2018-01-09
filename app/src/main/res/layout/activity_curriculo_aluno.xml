@@ -1,120 +1,381 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="activities.estgf.ipp.pt.projetocmu.CurriculoAlunoActivity"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    app:cardElevation="6dp"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true">
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="2sp"
-        android:layout_marginLeft="2sp">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textStyle="bold"
-            android:text="Nome: "/>
-        <EditText
-            android:layout_width="280sp"
-            android:layout_height="wrap_content"
-            android:textSize="13sp"
-            android:id="@+id/curriculo_nomeAluno_editText"
-            android:hint="Digite o nome"/>
-    </LinearLayout>
-
-    <LinearLayout
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="2sp"
-        android:layout_marginLeft="2sp">
-         <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textStyle="bold"
-            android:text="Aniversario: "/>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="13sp"
-            android:id="@+id/curriculo_dataAniversario_textView"
-            android:hint="Clique para selecionar a data de Aniversario" />
-    </LinearLayout>
+        android:layout_height="match_parent"
+        tools:context="activities.estgf.ipp.pt.projetocmu.CurriculoAlunoActivity"
+        android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5sp"
+                android:gravity="center"
+                android:layout_marginLeft="2sp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="5sp"
+                    android:hint="Dados pessoais: " />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="2sp"
-        android:layout_marginLeft="2sp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:src="@drawable/ic_person_black_24dp"
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="2sp"
+                    android:id="@+id/curriculo_nomeAluno_editText"
+                    android:hint="Digite o nome"/>
+            </LinearLayout>
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textStyle="bold"
-            android:text="Telefone: "/>
-        <EditText
-            android:layout_width="260sp"
-            android:layout_height="wrap_content"
-            android:textSize="13sp"
-            android:id="@+id/curriculo_telefoneAluno_editText"
-            android:hint="Digite o telefone"/>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="2sp"
-        android:layout_marginLeft="2sp">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textStyle="bold"
-            android:text="E-mail: "/>
-        <EditText
-            android:layout_width="276sp"
-            android:layout_height="wrap_content"
-            android:textSize="13sp"
-            android:id="@+id/curriculo_emailAluno_editText"
-            android:hint="Digite o email"/>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginTop="5sp"
+                    android:src="@drawable/ic_cake_black_24dp"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="10sp"
+                    android:layout_gravity="center"
+                    android:id="@+id/curriculo_dataAniversario_textView"
+                    android:hint="Clique para selecionar a data de Aniversario" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginTop="5sp"
+                    android:src="@drawable/ic_wc_black_24dp"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="2sp"
-        android:layout_marginLeft="2sp">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textStyle="bold"
-            android:text="Endereco: "/>
-        <EditText
-            android:layout_width="257sp"
-            android:layout_height="wrap_content"
-            android:textSize="13sp"
-            android:id="@+id/curriculo_enderecoAluno_editText"
-            android:hint="Digite o endereco"/>
-    </LinearLayout>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5sp"
-        android:gravity="center_horizontal">
-        <Button
-            android:layout_width="150sp"
-            android:layout_height="wrap_content"
-            android:id="@+id/curriculo_botaoSalvar_button"
-            android:text="Salvar" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginTop="5sp"
+                    android:src="@drawable/ic_smartphone_black_24dp"/>
 
-</LinearLayout>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:inputType="numberSigned"
+                    android:hint="(000)000-000-000"
+                    android:id="@+id/curriculo_telefoneAluno_editText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginTop="5sp"
+                    android:src="@drawable/ic_email_black_24dp"/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:id="@+id/curriculo_emailAluno_editText"
+                    android:hint="Digite o email"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginTop="5sp"
+                    android:src="@drawable/ic_place_black_24dp"/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:id="@+id/curriculo_enderecoAluno_editText"
+                    android:hint="Digite o endereco"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5sp"
+                android:gravity="center"
+                android:layout_marginLeft="2sp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginTop="3sp"
+                    android:layout_marginLeft="2sp"
+                    android:text="Objetivo " />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:src="@drawable/ic_work_black_24dp"
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:hint="Digite o cargo"
+                    android:id="@+id/curriculo_objetivo_editText"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5sp"
+                android:gravity="center"
+                android:layout_marginLeft="2sp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="5sp"
+                    android:text="Formação " />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:src="@drawable/ic_school_black_24dp"
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:hint="Digite o nome do curso"
+                    android:id="@+id/curriculo_formcao_editText"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginTop="3sp"
+                    android:layout_marginLeft="2sp"
+                    android:text="Experiencia "/>
+             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2sp"
+                android:layout_marginTop="2sp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5sp"
+                    android:src="@drawable/ic_business_black_24dp" />
+
+                <EditText
+                    android:id="@+id/curriculo_empresa_editText"
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:hint="Digite o nome da empresa"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:src="@drawable/ic_work_black_24dp"
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:hint="Digite o cargo"
+                    android:id="@+id/curriculo_cargo_editText"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5sp"
+                    android:text="Duração: "/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:id="@+id/curriculo_duracao_editText"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3sp"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:text="Cursos/Idiomas"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:src="@drawable/ic_language_black_24dp"
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:id="@+id/curriculo_idioma1_editText"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:src="@drawable/ic_language_black_24dp"
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:id="@+id/curriculo_idioma2_editText"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:layout_marginBottom="6sp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/curriculo_botaoSalvar_button"
+                    android:layout_width="150sp"
+                    android:layout_height="wrap_content"
+                    android:text="Salvar" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.v7.widget.CardView>
