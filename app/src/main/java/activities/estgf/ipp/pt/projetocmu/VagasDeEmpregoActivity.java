@@ -53,7 +53,7 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
         };
 
         actionBar.addTab(actionBar.newTab().setText("Sugeridos").setTabListener(tabListener));
-        actionBar.addTab(actionBar.newTab().setText("Mensagens").setTabListener(tabListener));
+        actionBar.addTab(actionBar.newTab().setText("Maps").setTabListener(tabListener));
 
 
         /*
@@ -76,7 +76,7 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menuVagas_curriculo_item:
-                Toast.makeText(VagasDeEmpregoActivity.this, "Tocou em curriculo", Toast.LENGTH_SHORT);
+                //Toast.makeText(VagasDeEmpregoActivity.this, "Tocou em curriculo", Toast.LENGTH_SHORT).show();
                 Intent vaiParaCurriculo = new Intent(this, CurriculoAlunoActivity.class);
                 startActivity(vaiParaCurriculo);
                 break;
