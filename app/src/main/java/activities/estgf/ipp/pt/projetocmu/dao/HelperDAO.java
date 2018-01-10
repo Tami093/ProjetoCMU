@@ -57,7 +57,6 @@ public class HelperDAO extends SQLiteOpenHelper {
 
 
 
-
         //Insersao na base de dados os valores!
         insereVagasAutomaticoAoCriarBanco(db);
 
