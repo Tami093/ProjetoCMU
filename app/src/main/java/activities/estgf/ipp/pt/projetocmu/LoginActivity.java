@@ -97,9 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 int idRadioSelecionado = radioGroupAlunoEmpresa.getCheckedRadioButtonId();
                 int numeroAuxRadio = 0; // 0 = aluno (padrao) . 1 = empresa.
 
-                Intent vaiParaEsqueceuSenha = new Intent(LoginActivity.this, VagasDeEmpregoActivity.class);
-                startActivity(vaiParaEsqueceuSenha);
-
+                /*
                 if((login.getText().toString().equals("") || login.getText().toString().equals(null)) ){
                     Toast.makeText(LoginActivity.this, "Eh necessario digitar uma USUARIO", Toast.LENGTH_SHORT).show();
                     return;
@@ -107,11 +105,17 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Eh necessario digitar uma SENHA", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                */
 
                 if(idRadioSelecionado == alunoRadio.getId()){
-                    numeroAuxRadio = 0;
+                    //numeroAuxRadio = 0;
+                    Intent vaiParaVagasActivity = new Intent(LoginActivity.this, VagasDeEmpregoActivity.class);
+                    startActivity(vaiParaVagasActivity);
+
                 }else if(idRadioSelecionado ==  empresaRadio.getId()){
                     numeroAuxRadio = 1;
+                    Intent vaiParaMainEmpresasActivy = new Intent(LoginActivity.this, MainEmpresasActivity.class);
+                    startActivity(vaiParaMainEmpresasActivy);
                 }
 
                 Toast.makeText(LoginActivity.this,

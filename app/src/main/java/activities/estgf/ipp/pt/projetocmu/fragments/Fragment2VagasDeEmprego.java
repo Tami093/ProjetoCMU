@@ -60,7 +60,7 @@ public class Fragment2VagasDeEmprego extends Fragment implements OnMapReadyCallb
                 MarkerOptions marcador = new MarkerOptions();
                 marcador.position(coordenada);
                 marcador.title(vaga.getNomeEmpresa());
-                marcador.snippet(String.valueOf(vaga.getSalario()));
+                marcador.snippet(String.valueOf(vaga.getSalario()) + " Euros");
                 googleMap.addMarker(marcador);
             }
         }

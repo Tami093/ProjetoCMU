@@ -13,6 +13,7 @@ import activities.estgf.ipp.pt.projetocmu.modelo.Vaga;
 public class VagaDAO {
 
     private Context contexto;
+    private HelperDAO dao;
 
     public VagaDAO(Context contexto) {
         this.contexto = contexto;
@@ -20,7 +21,7 @@ public class VagaDAO {
 
     public List<Vaga> buscaVagas() {
         String sql = "SELECT * FROM Vagas;";
-        HelperDAO dao = new HelperDAO(contexto);
+        dao = new HelperDAO(contexto);
         Cursor c = dao.getReadableDatabase().rawQuery(sql, null);
 
         List<Vaga> vagas = new ArrayList<Vaga>();
@@ -33,6 +34,7 @@ public class VagaDAO {
             vaga.setSalario(c.getString(c.getColumnIndex("salario")));
             vaga.setLocalTrabalho(c.getString(c.getColumnIndex("localtrabalho")));
             vaga.setVagaAtiva(c.getString(c.getColumnIndex("vagaativa")));
+            vaga.setIdEmpresa(c.getLong(c.getColumnIndex("idEmpresa")));
 
             vagas.add(vaga);
         }
@@ -42,7 +44,7 @@ public class VagaDAO {
 
     /*
     public void insereVagasAutomaticoAoCriarBanco() {
-        HelperDAO dao = new HelperDAO(contexto);
+        dao = new HelperDAO(contexto);
 
         List<Vaga> vagas = new ArrayList<Vaga>();
 

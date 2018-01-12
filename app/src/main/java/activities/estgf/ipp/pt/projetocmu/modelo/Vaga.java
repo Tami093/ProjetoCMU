@@ -10,6 +10,7 @@ public class Vaga implements Serializable {
     private String salario;
     private String localTrabalho;
     private String vagaAtiva;
+    private long idEmpresa;
 
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
@@ -31,4 +32,8 @@ public class Vaga implements Serializable {
 
     public String getVagaAtiva() { return vagaAtiva; }
     public void setVagaAtiva(String vagaAtiva) { this.vagaAtiva = vagaAtiva; }
+
+    public long getIdEmpresa() { return idEmpresa; }
+    public void setIdEmpresa(long idEmpresas) { this.idEmpresa = idEmpresa; }
+
 }

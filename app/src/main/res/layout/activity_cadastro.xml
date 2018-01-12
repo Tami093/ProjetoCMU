@@ -78,12 +78,50 @@
                 android:layout_marginLeft="10sp"
                 android:layout_marginTop="10sp"
                 android:textSize="18sp"
-                android:text=" NIF :   " />
+                android:text="NIF :  " />
             <EditText
                 android:layout_width="250sp"
                 android:layout_height="wrap_content"
                 android:id="@+id/cadastro_nif_editText"
                 android:hint="Digite o NIF da empresa"/>
+        </LinearLayout>
+
+        <!-- LineyarLayout do Endereco-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp"
+                android:text="Endereco : " />
+            <EditText
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:id="@+id/cadastro_endereco_editText"
+                android:hint="Digite o Endereco da empresa"/>
+        </LinearLayout>
+
+        <!-- LineyarLayout do Telefone-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10sp"
+                android:textSize="18sp"
+                android:text="Telefone : " />
+            <EditText
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:id="@+id/cadastro_telefone_editText"
+                android:hint="Digite o telefone da empresa"/>
         </LinearLayout>
 
         <!-- LineyarLayout da Senha-->
