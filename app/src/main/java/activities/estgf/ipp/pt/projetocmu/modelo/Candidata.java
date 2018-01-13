@@ -6,16 +6,16 @@ import java.util.List;
 public class Candidata implements Serializable {
 
     private long id;
-    private List<Aluno> alunos;
-    private List<Vaga> vagas;
+    private long idAluno;
+    private long idVaga;
 
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 
-    public List<Aluno> getAlunos() { return alunos; }
-    public void setAlunos(List<Aluno> alunos) { this.alunos = alunos; }
+    public long getIdAluno() { return idAluno; }
+    public void setIdAluno(long idAluno) { this.idAluno = idAluno; }
 
-    public List<Vaga> getVagas() { return vagas; }
-    public void setVagas(List<Vaga> vagas) { this.vagas = vagas; }
+    public long getIdVaga() { return idVaga; }
+    public void setIdVaga(long idVaga) { this.idVaga = idVaga; }
 
 }

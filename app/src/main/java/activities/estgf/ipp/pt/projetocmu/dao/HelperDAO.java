@@ -48,21 +48,14 @@ public class HelperDAO extends SQLiteOpenHelper {
 
         db.execSQL(sqlCriacaoTabelas);
 
-
-
-        sqlCriacaoTabelas = "CREATE TABLE IF NOT EXISTS CURRICULO(idAluno INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-                            "nome TEXT NOT NULL,"+
-                            "email TEXT NOT NULL,";
+        //Criacao da tabela ALUNO
+        sqlCriacaoTabelas = "CREATE TABLE IF NOT EXISTS ALUNO(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "nome TEXT NOT NULL,"+
+                "email TEXT NOT NULL);";
         db.execSQL(sqlCriacaoTabelas);
 
-
-        /*
-            sqlCriacaoTabelas = "CREATE TABLE IF NOT EXISTS Candidata ";
-            db.execSQL(sqlCriacaoTabelas);
-        */
-
-
-            sqlCriacaoTabelas = "CREATE TABLE IF NOT EXISTS CURRICULO(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+        // Criacao da Tabela de CURRICULO
+        sqlCriacaoTabelas = "CREATE TABLE IF NOT EXISTS CURRICULO(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                     "nome TEXT NOT NULL," +
                     "dataNasc TEXT NOT NULL,"+
                     "genero TEXT NOT NULL,"+
@@ -76,9 +69,21 @@ public class HelperDAO extends SQLiteOpenHelper {
                     "localEmpresa TEXT NOT NULL,"+
                     "idioma1 TEXT NOT NULL,"+
                     "idioma2 TEXT NOT NULL,"+
-                    "idAluno INTEGER NOT NULL"+
-                    "FOREIGN KEY(idAluno)REFERENCES ALUNO(id)";
+                    "idAluno INTEGER NOT NULL,"+
+                    "FOREIGN KEY(idAluno)REFERENCES ALUNO(id));";
+
             db.execSQL(sqlCriacaoTabelas);
+
+
+
+        //Criacao da tabela CANDIDATA
+        sqlCriacaoTabelas = "CREATE TABLE CANDIDATA (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "idAluno INTEGER NOT NULL," +
+                "idVagaEmp INTEGER NOT NULL," +
+                "FOREIGN KEY(idAluno) REFERENCES ALUNO(id)," +
+                "FOREIGN KEY(idVagaEmp) REFERENCES VAGAS(id));";
+        db.execSQL(sqlCriacaoTabelas);
+
 
 
 
@@ -106,9 +111,9 @@ public class HelperDAO extends SQLiteOpenHelper {
         List<Empresa> empresas = new ArrayList<Empresa>();
 
         Empresa e1 = new Empresa();
-        e1.setSenha("senhaContinente");
+        e1.setSenha("a");
         e1.setNome("Continente");
-        e1.setEmail("continente@contiente.com");
+        e1.setEmail("a");
         e1.setEndereco("R. Prof. Joaquim Barros Leite, Felgueiras");
         e1.setTelefone("951753624");
         e1.setNif("4458256954");

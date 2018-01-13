@@ -37,9 +37,7 @@ public class VagasEmpregosDaEmpresa extends BaseAdapter {
 
         View viewInflate = view;
         if(viewInflate == null){
-            viewInflate = inflater.inflate(R.layout.list_item_vagas_empregos_da_empresa,
-                                           viewGroup,
-                                          false); //Esse viewGrupo é a propria view, coloca falso para nao colocar 2 vezes ela.
+            viewInflate = inflater.inflate(R.layout.list_item_vagas_empregos_da_empresa, viewGroup, false); //Esse viewGrupo é a propria view, coloca falso para nao colocar 2 vezes ela.
         }
 
         TextView nomeVaga = (TextView) viewInflate.findViewById(R.id.listItemVagasEmpregoDaEmpresa_nomeVaga_textView);
@@ -50,7 +48,6 @@ public class VagasEmpregosDaEmpresa extends BaseAdapter {
 
         TextView quantidadeSalario = (TextView) viewInflate.findViewById(R.id.listItemVagasEmpregoDaEmpresa_valorSalario_textView);
         quantidadeSalario.setText(vaga.getSalario());
-
 
 
         return viewInflate;
