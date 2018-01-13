@@ -20,6 +20,7 @@ import android.database.*;
 
 //import java.util.logging.Logger;
 
+import activities.estgf.ipp.pt.projetocmu.dao.EmpresaDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.HelperDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.VagaDAO;
 import activities.estgf.ipp.pt.projetocmu.fragments.Fragment2MapaDoVagasDeEmprego;
@@ -97,30 +98,33 @@ public class LoginActivity extends AppCompatActivity {
                 int idRadioSelecionado = radioGroupAlunoEmpresa.getCheckedRadioButtonId();
                 int numeroAuxRadio = 0; // 0 = aluno (padrao) . 1 = empresa.
 
-                /*
-                if((login.getText().toString().equals("") || login.getText().toString().equals(null)) ){
-                    Toast.makeText(LoginActivity.this, "Eh necessario digitar uma USUARIO", Toast.LENGTH_SHORT).show();
-                    return;
-                }else if(senha.getText().toString().equals("") || senha.getText().toString().equals(null)){
-                    Toast.makeText(LoginActivity.this, "Eh necessario digitar uma SENHA", Toast.LENGTH_SHORT).show();
+
+                if((login.getText().toString().equals("") || login.getText().toString().equals(null))
+                  ||senha.getText().toString().equals("") || senha.getText().toString().equals(null)){
+
+                    Toast.makeText(LoginActivity.this, "Login ou Senha sem valor!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                */
 
                 if(idRadioSelecionado == alunoRadio.getId()){
                     //numeroAuxRadio = 0;
                     Intent vaiParaVagasActivity = new Intent(LoginActivity.this, VagasDeEmpregoActivity.class);
                     startActivity(vaiParaVagasActivity);
 
-                }else if(idRadioSelecionado ==  empresaRadio.getId()){
-                    numeroAuxRadio = 1;
-                    Intent vaiParaMainEmpresasActivy = new Intent(LoginActivity.this, MainEmpresasActivity.class);
-                    startActivity(vaiParaMainEmpresasActivy);
-                }
 
-                Toast.makeText(LoginActivity.this,
-                               login.getText().toString() + " / " + senha.getText().toString() + " / " + numeroAuxRadio,
-                                Toast.LENGTH_LONG).show();
+                }else if(idRadioSelecionado ==  empresaRadio.getId()){
+                    EmpresaDAO empresaDAO = new EmpresaDAO(LoginActivity.this);
+
+                    //Verifica se a empresa esta cadastrada
+                    if(empresaDAO.ehEmpresaCadastrada(login.getText().toString(), senha.getText().toString())){
+                        Intent vaiParaMainEmpresasActivy = new Intent(LoginActivity.this, MainEmpresasActivity.class);
+                        startActivity(vaiParaMainEmpresasActivy);
+                        //Toast.makeText(LoginActivity.this,"!!Esta Cadastrado No Banco de Dados!!", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(LoginActivity.this,"Usuario ou Senha invalidos!", Toast.LENGTH_LONG).show();
+                    }
+
+                }
             }
         });
 

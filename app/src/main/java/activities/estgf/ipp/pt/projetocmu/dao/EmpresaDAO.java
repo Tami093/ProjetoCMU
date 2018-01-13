@@ -52,6 +52,15 @@ public class EmpresaDAO {
         dao.close();
     }
 
+    public boolean ehEmpresaCadastrada (String email, String senha){
+        dao = new HelperDAO(contexto);
+        Cursor c =  dao.getReadableDatabase().rawQuery("SELECT * FROM Empresas WHERE email = ? and senha = ?", new String[]{email,senha} );
+        int resultado = c.getCount();
+        c.close();
+
+        return resultado > 0;
+    }
+
 
     @NonNull
     private ContentValues pegaDadosDaEmpresa(Empresa empresa) {
@@ -63,5 +72,29 @@ public class EmpresaDAO {
         dados.put("telefone",empresa.getTelefone());
         dados.put("nif", empresa.getNif());
         return dados;
+    }
+
+
+    public void TestaDadosCadastrados (){
+        String sql = "SELECT * FROM EMPRESAS;";
+        dao = new HelperDAO(contexto);
+        Cursor c = dao.getReadableDatabase().rawQuery(sql, null);
+
+        List<Empresa> empresas = new ArrayList<Empresa>();
+        while (c.moveToNext()){
+            Empresa empresa = new Empresa();
+            empresa.setId(c.getLong(c.getColumnIndex("id")));
+            empresa.setSenha(c.getString(c.getColumnIndex("senha")));
+            empresa.setNome(c.getString(c.getColumnIndex("nome")));
+            empresa.setEmail(c.getString(c.getColumnIndex("email")));
+            empresa.setEndereco(c.getString(c.getColumnIndex("endereco")));
+            empresa.setTelefone(c.getString(c.getColumnIndex("telefone")));
+            empresa.setNif(c.getString(c.getColumnIndex("nif")));
+            empresas.add(empresa);
+
+            System.out.println("Dados da empresa !!!!!! COM NOME : " + empresa.getNome());
+        }
+        c.close();
+        dao.close();
     }
 }

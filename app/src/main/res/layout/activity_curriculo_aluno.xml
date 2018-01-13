@@ -94,7 +94,8 @@
                     android:src="@drawable/ic_wc_black_24dp"/>
                 <Spinner
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:id="@+id/curriculo_genero_spinner"/>
 
             </LinearLayout>
 
