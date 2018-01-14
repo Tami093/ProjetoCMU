@@ -16,16 +16,25 @@ import java.util.List;
 import java.util.Vector;
 import activities.estgf.ipp.pt.projetocmu.adapter.PageAdapter;
 import activities.estgf.ipp.pt.projetocmu.adapter.VagasEmpregoAdapter;
+import activities.estgf.ipp.pt.projetocmu.dao.CurriculoDao;
 import activities.estgf.ipp.pt.projetocmu.fragments.Fragment1VagasDeEmprego;
 import activities.estgf.ipp.pt.projetocmu.fragments.Fragment2VagasDeEmprego;
+import activities.estgf.ipp.pt.projetocmu.modelo.Curriculo;
 import activities.estgf.ipp.pt.projetocmu.modelo.Vaga;
 
 public class VagasDeEmpregoActivity extends AppCompatActivity {
+
+    private Intent intentLogin;
+    private long idDoAluno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vagas_de_emprego);
+
+
+        intentLogin = getIntent();
+        idDoAluno = intentLogin.getLongExtra("idDoAluno",0);
 
         List<Fragment> fragments = new Vector<>();
         fragments.add(Fragment.instantiate(this, Fragment1VagasDeEmprego.class.getName()));
@@ -78,6 +87,10 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
             case R.id.menuVagas_curriculo_item:
                 //Toast.makeText(VagasDeEmpregoActivity.this, "Tocou em curriculo", Toast.LENGTH_SHORT).show();
                 Intent vaiParaCurriculo = new Intent(this, CurriculoAlunoActivity.class);
+                CurriculoDao curriculoDao = new CurriculoDao(VagasDeEmpregoActivity.this);
+                Curriculo curriculo  = curriculoDao.existeCurriculo(idDoAluno);
+                vaiParaCurriculo.putExtra("curriculo", curriculo);
+                vaiParaCurriculo.putExtra("idDoAluno",idDoAluno);
                 startActivity(vaiParaCurriculo);
                 break;
             /*

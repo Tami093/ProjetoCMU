@@ -20,6 +20,7 @@ import android.database.*;
 
 //import java.util.logging.Logger;
 
+import activities.estgf.ipp.pt.projetocmu.dao.AlunoDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.EmpresaDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.HelperDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.VagaDAO;
@@ -107,9 +108,19 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 if(idRadioSelecionado == alunoRadio.getId()){
-                    //numeroAuxRadio = 0;
-                    Intent vaiParaVagasActivity = new Intent(LoginActivity.this, VagasDeEmpregoActivity.class);
-                    startActivity(vaiParaVagasActivity);
+                    AlunoDAO alunoDAO = new AlunoDAO(LoginActivity.this);
+
+                    if(alunoDAO.existeAluno(login.getText().toString(), senha.getText().toString())){
+                        long idAluno;
+                        idAluno = alunoDAO.pegaIdAluno(login.getText().toString(), senha.getText().toString());
+
+                        Intent vaiParaVagasActivity = new Intent(LoginActivity.this, VagasDeEmpregoActivity.class);
+                        vaiParaVagasActivity.putExtra("idDoAluno",idAluno);
+                        startActivity(vaiParaVagasActivity);
+                    }
+                    else{
+                        Toast.makeText(LoginActivity.this,"Usuario ou Senha invalidos!", Toast.LENGTH_LONG).show();
+                    }
 
 
                 }else if(idRadioSelecionado ==  empresaRadio.getId()){

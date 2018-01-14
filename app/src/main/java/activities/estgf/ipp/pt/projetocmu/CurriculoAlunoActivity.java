@@ -1,7 +1,9 @@
 package activities.estgf.ipp.pt.projetocmu;
 
 import android.app.DatePickerDialog;
+import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.service.autofill.FillEventHistory;
@@ -36,26 +38,36 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
     private Button botaoSalvar;
     private Spinner spinnerGenero;
     private DatePickerDialog.OnDateSetListener dataAniversarioListener;
+    private Intent intentVagasDeEmprego;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_curriculo_aluno);
 
+        intentVagasDeEmprego = getIntent();
+        final long idDoAluno = intentVagasDeEmprego.getLongExtra("idDoAluno", 0);
+        final Curriculo curriculo = (Curriculo) intentVagasDeEmprego.getSerializableExtra("curriculo");
+
+        System.out.println("BBBBBBBBBBBBBBBBBBBBBB");
+        System.out.println(idDoAluno);
+        System.out.println("BBBBBBBBBBBBBBBBBBBBBB");
+
+
         nome = (EditText) findViewById(R.id.curriculo_nomeAluno_editText);
         dataAniversario = (TextView) findViewById(R.id.curriculo_dataAniversario_textView);
-        spinnerGenero = (Spinner)  findViewById(R.id.curriculo_genero_spinner);
-        telefone = (EditText)findViewById(R.id.curriculo_telefoneAluno_editText);
-        email = (EditText)findViewById(R.id.curriculo_emailAluno_editText);
-        endereco = (EditText)findViewById(R.id.curriculo_enderecoAluno_editText);
-        objetivo = (EditText)findViewById(R.id.curriculo_objetivo_editText);
+        spinnerGenero = (Spinner) findViewById(R.id.curriculo_genero_spinner);
+        telefone = (EditText) findViewById(R.id.curriculo_telefoneAluno_editText);
+        email = (EditText) findViewById(R.id.curriculo_emailAluno_editText);
+        endereco = (EditText) findViewById(R.id.curriculo_enderecoAluno_editText);
+        objetivo = (EditText) findViewById(R.id.curriculo_objetivo_editText);
         curso = (EditText) findViewById(R.id.curriculo_formcao_editText);
-        empresa = (EditText)findViewById(R.id.curriculo_empresa_editText);
-        cargo =(EditText)findViewById(R.id.curriculo_cargo_editText);
-        periodo =(EditText) findViewById(R.id.curriculo_duracao_editText);
-        idioma1 = (EditText)findViewById(R.id.curriculo_idioma1_editText);
-        idioma2= (EditText)findViewById(R.id.curriculo_idioma2_editText);
-
+        empresa = (EditText) findViewById(R.id.curriculo_empresa_editText);
+        cargo = (EditText) findViewById(R.id.curriculo_cargo_editText);
+        periodo = (EditText) findViewById(R.id.curriculo_duracao_editText);
+        idioma1 = (EditText) findViewById(R.id.curriculo_idioma1_editText);
+        idioma2 = (EditText) findViewById(R.id.curriculo_idioma2_editText);
 
         //mascara do campo telefone
         MaskEditTextChangedListener maskTEL = new MaskEditTextChangedListener("(###) ###-###-###", telefone);
@@ -71,6 +83,24 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
         ArrayAdapter<String> dadosAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,genero);
         dadosAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinnerGenero.setAdapter(dadosAdapter);
+
+        if (curriculo != null){
+            nome.setText(curriculo.getNome());
+            dataAniversario.setText(curriculo.getDataNasc());
+
+            telefone.setText(curriculo.getTelefone());
+            email.setText(curriculo.getEmail());
+            endereco.setText(curriculo.getEnderenco());
+            objetivo.setText(curriculo.getObejtivo());
+            curso.setText(curriculo.getCurso());
+            empresa.setText(curriculo.getEmpresa());
+            cargo.setText(curriculo.getCargo());
+            periodo.setText(curriculo.getPerido());
+            idioma1.setText(curriculo.getIdioma1());
+            idioma2.setText(curriculo.getIdioma2());
+        }
+
+
         // Calendario data nascimento
         dataDeAniversario();
         //botao salvar onClick
@@ -87,23 +117,34 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
                         ||objetivo.getText().toString().equals("") || objetivo.getText().toString().equals(null)
                         ||curso.getText().toString().equals("") || curso.getText().toString().equals(null)){
 
-                    Toast.makeText(CurriculoAlunoActivity.this, "Verifique se os campos estão preenchidos corretamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CurriculoAlunoActivity.this, "Verifique se os campos estão preenchidos corretamente"+ curriculo.getIdAluno(), Toast.LENGTH_SHORT).show();
                 }
                 else{
                     CurriculoDao dao = new CurriculoDao(CurriculoAlunoActivity.this);
-                    Curriculo curriculo = new Curriculo(1,nome.getText().toString(),dataAniversario.getText().toString(),
-                                                        spinnerGenero.getSelectedItem().toString(),telefone.getText().toString(),
-                                                        email.getText().toString(),endereco.getText().toString(),objetivo.getText().toString(),curso.getText().toString(),
-                                                        empresa.getText().toString(),cargo.getText().toString(),periodo.getText().toString(),idioma1.getText().toString(),idioma2.getText().toString());
 
-                    dao.insereCurriculo(curriculo);
+                    if(curriculo != null){
+                        dao.atualizaCurriculo(curriculo);
+                        Toast.makeText(CurriculoAlunoActivity.this,"Atualizado Com Sucesso", Toast.LENGTH_SHORT).show();
+                    }else{
+
+
+                        System.out.println("BBBBBBBBBBBBBBBBBBBBBB");
+                        System.out.println(idDoAluno);
+                        System.out.println("BBBBBBBBBBBBBBBBBBBBBB");
+
+                        Curriculo curriculoAux = new Curriculo(idDoAluno,nome.getText().toString(),dataAniversario.getText().toString(),
+                                spinnerGenero.getSelectedItem().toString(),telefone.getText().toString(),
+                                email.getText().toString(),endereco.getText().toString(),objetivo.getText().toString(),curso.getText().toString(),
+                                empresa.getText().toString(),cargo.getText().toString(),periodo.getText().toString(),idioma1.getText().toString(),idioma2.getText().toString());
+                        dao.insereCurriculo(curriculoAux);
+                        Toast.makeText(CurriculoAlunoActivity.this, spinnerGenero.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                    }
                 }
-
             }
         });
     }
 
-    //Lista spinner
+    // spinner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
@@ -114,6 +155,17 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+    public void  setSpinerText(Spinner spinnerGenero,Curriculo curriculo){
+
+        for(int i= 0; i < spinnerGenero.getAdapter().getCount(); i++)
+        {
+            if(spinnerGenero.getAdapter().getItem(i).toString().contains(curriculo.getSexo()))
+            {
+                spinnerGenero.setSelection(i);
+            }
+        }
+    }
+
     //Calendario data de nascimento
     public void dataDeAniversario(){
         dataAniversario = (TextView) findViewById(R.id.curriculo_dataAniversario_textView);
