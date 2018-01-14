@@ -37,8 +37,13 @@ public class CandidataDAO {
         return candidatos;
     }
 
-    public int quantidadeDeCandidatos(){
+    public String quantidadeDeCandidatos(String id){
+        dao = new HelperDAO(contexto);
+        Cursor c =
+                dao.getReadableDatabase().rawQuery("SELECT * FROM CANDIDATA WHERE idVagaEmp = ?", new String[]{id} );
+        String resultado = String.valueOf(c.getCount());
+        c.close();
 
-        return 0;
+        return resultado;
     }
 }

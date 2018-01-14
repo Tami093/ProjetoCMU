@@ -34,6 +34,6 @@ public class Vaga implements Serializable {
     public void setVagaAtiva(String vagaAtiva) { this.vagaAtiva = vagaAtiva; }
 
     public long getIdEmpresa() { return idEmpresa; }
-    public void setIdEmpresa(long idEmpresas) { this.idEmpresa = idEmpresa; }
+    public void setIdEmpresa(long idEmpresa) { this.idEmpresa = idEmpresa; }
 
 }

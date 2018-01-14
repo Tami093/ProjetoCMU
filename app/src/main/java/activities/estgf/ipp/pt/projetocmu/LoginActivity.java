@@ -25,6 +25,7 @@ import activities.estgf.ipp.pt.projetocmu.dao.HelperDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.VagaDAO;
 import activities.estgf.ipp.pt.projetocmu.fragments.Fragment2MapaDoVagasDeEmprego;
 import activities.estgf.ipp.pt.projetocmu.fragments.Fragment2VagasDeEmprego;
+import activities.estgf.ipp.pt.projetocmu.modelo.Empresa;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -43,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
 
         try {
@@ -117,7 +117,11 @@ public class LoginActivity extends AppCompatActivity {
 
                     //Verifica se a empresa esta cadastrada
                     if(empresaDAO.ehEmpresaCadastrada(login.getText().toString(), senha.getText().toString())){
+                        Empresa empresa = new Empresa();
+                        empresa = empresaDAO.pegaEmpresa(login.getText().toString(), senha.getText().toString());
+
                         Intent vaiParaMainEmpresasActivy = new Intent(LoginActivity.this, MainEmpresasActivity.class);
+                        vaiParaMainEmpresasActivy.putExtra("idDaEmpresa",empresa.getId());
                         startActivity(vaiParaMainEmpresasActivy);
                         //Toast.makeText(LoginActivity.this,"!!Esta Cadastrado No Banco de Dados!!", Toast.LENGTH_LONG).show();
                     }else{

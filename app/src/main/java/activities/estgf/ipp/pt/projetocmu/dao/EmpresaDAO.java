@@ -61,6 +61,26 @@ public class EmpresaDAO {
         return resultado > 0;
     }
 
+    public Empresa pegaEmpresa(String email, String senha){
+        Cursor c =  dao.getReadableDatabase().rawQuery("SELECT * FROM EMPRESA WHERE email = ? and senha = ?", new String[]{email,senha} );
+        Empresa empresa = new Empresa();
+
+        while (c.moveToNext()) {
+            empresa.setId(c.getLong(c.getColumnIndex("id")));
+            empresa.setSenha(c.getString(c.getColumnIndex("senha")));
+            empresa.setNome(c.getString(c.getColumnIndex("nome")));
+            empresa.setEmail(c.getString(c.getColumnIndex("email")));
+            empresa.setEndereco(c.getString(c.getColumnIndex("endereco")));
+            empresa.setTelefone(c.getString(c.getColumnIndex("telefone")));
+            empresa.setNif(c.getString(c.getColumnIndex("nif")));
+        }
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+        System.out.println(empresa.getId());
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+
+        return empresa;
+    }
+
 
     @NonNull
     private ContentValues pegaDadosDaEmpresa(Empresa empresa) {
@@ -83,6 +103,7 @@ public class EmpresaDAO {
         List<Empresa> empresas = new ArrayList<Empresa>();
         while (c.moveToNext()){
             Empresa empresa = new Empresa();
+
             empresa.setId(c.getLong(c.getColumnIndex("id")));
             empresa.setSenha(c.getString(c.getColumnIndex("senha")));
             empresa.setNome(c.getString(c.getColumnIndex("nome")));
@@ -90,6 +111,7 @@ public class EmpresaDAO {
             empresa.setEndereco(c.getString(c.getColumnIndex("endereco")));
             empresa.setTelefone(c.getString(c.getColumnIndex("telefone")));
             empresa.setNif(c.getString(c.getColumnIndex("nif")));
+
             empresas.add(empresa);
 
             System.out.println("Dados da empresa !!!!!! COM NOME : " + empresa.getNome());
@@ -97,4 +119,5 @@ public class EmpresaDAO {
         c.close();
         dao.close();
     }
+
 }
