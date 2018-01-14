@@ -68,8 +68,8 @@ public class HelperDAO extends SQLiteOpenHelper {
                     "objetivo TEXT NOT NULL,"+
                     "curso TEXT NOT NULL,"+
                     "empresa TEXT NOT NULL,"+
+                    "cargo TEXT NOT NULL,"+
                     "periodo TEXT NOT NULL,"+
-                    "localEmpresa TEXT NOT NULL,"+
                     "idioma1 TEXT NOT NULL,"+
                     "idioma2 TEXT NOT NULL,"+
                     "idAluno INTEGER NOT NULL,"+

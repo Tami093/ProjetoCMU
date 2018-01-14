@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class Curriculo implements Serializable {
     private long id;
-    private Aluno idAluno;
+    private long idAluno;
     private String nome;
     private String dataNasc;
     private String sexo;
@@ -18,24 +18,38 @@ public class Curriculo implements Serializable {
     private String obejtivo;
     private String curso;
     private String empresa;
-    private String localEmpresa;
+    private String cargo;
     private String perido;
     private String idioma1;
     private String idioma2;
 
-
+    public Curriculo(long idAluno, String nome, String dataNasc, String sexo, String telefone, String email, String enderenco, String obejtivo, String curso, String empresa, String cargo, String perido, String idioma1, String idioma2) {
+        this.idAluno = idAluno;
+        this.nome = nome;
+        this.dataNasc = dataNasc;
+        this.sexo = sexo;
+        this.telefone = telefone;
+        this.email = email;
+        this.enderenco = enderenco;
+        this.obejtivo = obejtivo;
+        this.curso = curso;
+        this.empresa = empresa;
+        this.cargo = cargo;
+        this.perido = perido;
+        this.idioma1 = idioma1;
+        this.idioma2 = idioma2;
+    }
 
     public long getId() {return id;}
     public void setId(long id) {this.id = id;}
 
-    public Aluno getIdAluno() {return idAluno;}
-    public void setIdAluno(Aluno idAluno) {this.idAluno = idAluno;}
+    public long getIdAluno() {return idAluno;}
+    public void setIdAluno(long idAluno) {this.idAluno = idAluno;}
 
     public String getNome() {return nome;}
     public void setNome(String nome) {this.nome = nome;}
 
     public String getDataNasc() {return dataNasc;}
-
     public void setDataNasc(String dataNasc) {this.dataNasc = dataNasc;}
 
     public String getSexo() {return sexo;}
@@ -59,8 +73,8 @@ public class Curriculo implements Serializable {
     public String getEmpresa() {return empresa;}
     public void setEmpresa(String empresa) {this.empresa = empresa;}
 
-    public String getLocalEmpresa() {return localEmpresa;}
-    public void setLocalEmpresa(String localEmpresa) {this.localEmpresa = localEmpresa;}
+    public String getCargo() {return cargo;}
+    public void setCargo(String cargo) {this.cargo = cargo;}
 
     public String getPerido() {return perido;}
     public void setPerido(String perido) {this.perido = perido;}
