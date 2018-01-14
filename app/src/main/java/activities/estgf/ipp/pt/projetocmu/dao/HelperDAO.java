@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import activities.estgf.ipp.pt.projetocmu.modelo.Aluno;
+import activities.estgf.ipp.pt.projetocmu.modelo.Candidata;
 import activities.estgf.ipp.pt.projetocmu.modelo.Empresa;
 import activities.estgf.ipp.pt.projetocmu.modelo.Vaga;
 
@@ -23,8 +25,8 @@ public class HelperDAO extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
 
-        // Criacao da Tabela de EMPRESAS
-        sqlCriacaoTabelas = "CREATE TABLE EMPRESAS (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+        // Criacao da Tabela de EMPRESA
+        sqlCriacaoTabelas = "CREATE TABLE EMPRESA (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
                 "senha TEXT NOT NULL," +
                 "nome TEXT NOT NULL," +
                 "email TEXT NOT NULL," +
@@ -35,8 +37,8 @@ public class HelperDAO extends SQLiteOpenHelper {
 
         db.execSQL(sqlCriacaoTabelas);
         
-        // Criacao da Tabela de VAGAS
-        sqlCriacaoTabelas = "CREATE TABLE VAGAS (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+        // Criacao da Tabela de VAGA
+        sqlCriacaoTabelas = "CREATE TABLE VAGA (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "nomevaga TEXT NOT NULL," +
                 "nomeempresa TEXT NOT NULL," +
                 "tipovaga TEXT NOT NULL," +
@@ -44,7 +46,7 @@ public class HelperDAO extends SQLiteOpenHelper {
                 "localtrabalho TEXT NOT NULL," +
                 "vagaativa TEXT NOT NULL," +
                 "idEmpresa INTEGER NOT NULL," +
-                "FOREIGN KEY(idEmpresa) REFERENCES EMPRESAS(id));";
+                "FOREIGN KEY(idEmpresa) REFERENCES EMPRESA(id));";
 
         db.execSQL(sqlCriacaoTabelas);
 
@@ -52,6 +54,7 @@ public class HelperDAO extends SQLiteOpenHelper {
         sqlCriacaoTabelas = "CREATE TABLE IF NOT EXISTS ALUNO(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "nome TEXT NOT NULL,"+
                 "email TEXT NOT NULL);";
+
         db.execSQL(sqlCriacaoTabelas);
 
         // Criacao da Tabela de CURRICULO
@@ -72,7 +75,7 @@ public class HelperDAO extends SQLiteOpenHelper {
                     "idAluno INTEGER NOT NULL,"+
                     "FOREIGN KEY(idAluno)REFERENCES ALUNO(id));";
 
-            db.execSQL(sqlCriacaoTabelas);
+        db.execSQL(sqlCriacaoTabelas);
 
 
 
@@ -81,7 +84,7 @@ public class HelperDAO extends SQLiteOpenHelper {
                 "idAluno INTEGER NOT NULL," +
                 "idVagaEmp INTEGER NOT NULL," +
                 "FOREIGN KEY(idAluno) REFERENCES ALUNO(id)," +
-                "FOREIGN KEY(idVagaEmp) REFERENCES VAGAS(id));";
+                "FOREIGN KEY(idVagaEmp) REFERENCES VAGA(id));";
         db.execSQL(sqlCriacaoTabelas);
 
 
@@ -91,7 +94,8 @@ public class HelperDAO extends SQLiteOpenHelper {
         //Insersao na base de dados os valores!
         insereEmpresasAutomaticoAoCriarBanco(db);
         insereVagasAutomaticoAoCriarBanco(db);
-
+        insereAlunosAutomaticoAoCriarBanco(db);
+        insereCandidataAutomaticoAoCriarBanco(db);
     }
 
     @Override
@@ -137,11 +141,53 @@ public class HelperDAO extends SQLiteOpenHelper {
             dados.put("telefone", empresas.get(i).getTelefone());
             dados.put("nif", empresas.get(i).getNif());
 
-            db.insert("Empresas", null, dados);
+            db.insert("Empresa", null, dados);
         }
 
     }
 
+
+    private void insereAlunosAutomaticoAoCriarBanco (SQLiteDatabase db){
+        List<Aluno> alunos = new ArrayList<Aluno>();
+
+        Aluno a1 = new Aluno();
+        a1.setNome("Vitor Hugo");
+        a1.setEmail("vh@gmail.com");
+        alunos.add(a1);
+
+        Aluno a2 = new Aluno();
+        a2.setNome("Tamires Cristina");
+        a2.setEmail("tc@gmail.com");
+        alunos.add(a2);
+
+        Aluno a3 = new Aluno();
+        a3.setNome("Caio Correa");
+        a3.setEmail("cc@gmail.com");
+        alunos.add(a3);
+
+        Aluno a4 = new Aluno();
+        a4.setNome("Tamara Oliveira");
+        a4.setEmail("to@gmail.com");
+        alunos.add(a4);
+
+        Aluno a5 = new Aluno();
+        a5.setNome("Carlos Eduardo");
+        a5.setEmail("ce@gmail.com");
+        alunos.add(a5);
+
+        Aluno a6 = new Aluno();
+        a6.setNome("Janaina Carlinhos");
+        a6.setEmail("jc@gmail.com");
+        alunos.add(a6);
+
+        for(int i = 0 ; i < alunos.size() ; i++) {
+            ContentValues dados = new ContentValues();
+            dados.put("nome", alunos.get(i).getNome());
+            dados.put("email", alunos.get(i).getEmail());
+
+            db.insert("Aluno", null, dados);
+        }
+    }
 
     private void insereVagasAutomaticoAoCriarBanco(SQLiteDatabase db) {
         List<Vaga> vagas = new ArrayList<Vaga>();
@@ -206,7 +252,48 @@ public class HelperDAO extends SQLiteOpenHelper {
             dados.put("vagaativa", vagas.get(i).getVagaAtiva());
             dados.put("idEmpresa",vagas.get(i).getIdEmpresa());
 
-            db.insert("Vagas", null, dados);
+            db.insert("VAGA", null, dados);
         }
+    }
+
+
+
+    private void insereCandidataAutomaticoAoCriarBanco (SQLiteDatabase db){
+        List<Candidata> candidatas = new ArrayList<Candidata>();
+
+        Candidata c1 = new Candidata();
+        c1.setIdAluno(1);
+        c1.setIdVaga(1);
+        candidatas.add(c1);
+
+        Candidata c2 = new Candidata();
+        c2.setIdAluno(1);
+        c2.setIdVaga(2);
+        candidatas.add(c2);
+
+        Candidata c3 = new Candidata();
+        c3.setIdAluno(2);
+        c3.setIdVaga(1);
+        candidatas.add(c3);
+
+        Candidata c4 = new Candidata();
+        c4.setIdAluno(2);
+        c4.setIdVaga(2);
+        candidatas.add(c4);
+
+        Candidata c5 = new Candidata();
+        c5.setIdAluno(3);
+        c5.setIdVaga(1);
+        candidatas.add(c5);
+
+
+        for(int i = 0 ; i < candidatas.size() ; i++) {
+            ContentValues dados = new ContentValues();
+            dados.put("idAluno", candidatas.get(i).getIdAluno());
+            dados.put("idVagaEmp", candidatas.get(i).getIdVaga());
+
+            db.insert("CANDIDATA", null, dados);
+        }
+
     }
 }

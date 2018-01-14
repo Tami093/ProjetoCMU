@@ -20,7 +20,7 @@ public class VagaDAO {
     }
 
     public List<Vaga> buscaVagas() {
-        String sql = "SELECT * FROM Vagas;";
+        String sql = "SELECT * FROM Vaga;";
         dao = new HelperDAO(contexto);
         Cursor c = dao.getReadableDatabase().rawQuery(sql, null);
 

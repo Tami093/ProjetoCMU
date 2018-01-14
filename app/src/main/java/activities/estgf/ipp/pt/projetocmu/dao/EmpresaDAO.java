@@ -18,7 +18,7 @@ public class EmpresaDAO {
     public EmpresaDAO(Context contexto) { this.contexto = contexto; }
 
     public List<Empresa> buscaEmpresas() {
-        String sql = "SELECT * FROM EMPRESAS;";
+        String sql = "SELECT * FROM EMPRESA;";
         dao = new HelperDAO(contexto);
         Cursor c = dao.getReadableDatabase().rawQuery(sql, null);
 
@@ -47,14 +47,14 @@ public class EmpresaDAO {
 
         ContentValues dados = pegaDadosDaEmpresa(empresa);
 
-        dao.getWritableDatabase().insert("EMPRESAS", null, dados);
+        dao.getWritableDatabase().insert("EMPRESA", null, dados);
 
         dao.close();
     }
 
     public boolean ehEmpresaCadastrada (String email, String senha){
         dao = new HelperDAO(contexto);
-        Cursor c =  dao.getReadableDatabase().rawQuery("SELECT * FROM Empresas WHERE email = ? and senha = ?", new String[]{email,senha} );
+        Cursor c =  dao.getReadableDatabase().rawQuery("SELECT * FROM EMPRESA WHERE email = ? and senha = ?", new String[]{email,senha} );
         int resultado = c.getCount();
         c.close();
 
@@ -76,7 +76,7 @@ public class EmpresaDAO {
 
 
     public void TestaDadosCadastrados (){
-        String sql = "SELECT * FROM EMPRESAS;";
+        String sql = "SELECT * FROM EMPRESA;";
         dao = new HelperDAO(contexto);
         Cursor c = dao.getReadableDatabase().rawQuery(sql, null);
 
