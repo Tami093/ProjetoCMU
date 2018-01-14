@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import activities.estgf.ipp.pt.projetocmu.R;
+import activities.estgf.ipp.pt.projetocmu.dao.CandidataDAO;
 import activities.estgf.ipp.pt.projetocmu.modelo.Vaga;
 
 public class VagasEmpregosDaEmpresa extends BaseAdapter {
@@ -31,6 +32,8 @@ public class VagasEmpregosDaEmpresa extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
+        CandidataDAO candidataDAO = new CandidataDAO(context);
+
         Vaga vaga = vagas.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -48,6 +51,11 @@ public class VagasEmpregosDaEmpresa extends BaseAdapter {
 
         TextView quantidadeSalario = (TextView) viewInflate.findViewById(R.id.listItemVagasEmpregoDaEmpresa_valorSalario_textView);
         quantidadeSalario.setText(vaga.getSalario());
+
+        TextView qtdPessoasParaVaga = (TextView) viewInflate.findViewById(R.id.listItemVagasEmpregoDaEmpresa_qtdPessoasParaVaga_textView);
+        qtdPessoasParaVaga.setText(String.valueOf(vaga.getIdEmpresa()));
+        //qtdPessoasParaVaga.setText(candidataDAO.quantidadeDeCandidatos(String.valueOf(vaga.getId())));
+
 
 
         return viewInflate;

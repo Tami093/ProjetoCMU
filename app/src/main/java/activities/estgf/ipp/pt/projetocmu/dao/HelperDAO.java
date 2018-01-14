@@ -80,15 +80,12 @@ public class HelperDAO extends SQLiteOpenHelper {
 
 
         //Criacao da tabela CANDIDATA
-        sqlCriacaoTabelas = "CREATE TABLE CANDIDATA (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+        sqlCriacaoTabelas = "CREATE TABLE IF NOT EXISTS CANDIDATA (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "idAluno INTEGER NOT NULL," +
                 "idVagaEmp INTEGER NOT NULL," +
                 "FOREIGN KEY(idAluno) REFERENCES ALUNO(id)," +
                 "FOREIGN KEY(idVagaEmp) REFERENCES VAGA(id));";
         db.execSQL(sqlCriacaoTabelas);
-
-
-
 
 
         //Insersao na base de dados os valores!
@@ -267,25 +264,29 @@ public class HelperDAO extends SQLiteOpenHelper {
         candidatas.add(c1);
 
         Candidata c2 = new Candidata();
-        c2.setIdAluno(1);
+        c2.setIdAluno(2);
         c2.setIdVaga(2);
         candidatas.add(c2);
 
         Candidata c3 = new Candidata();
-        c3.setIdAluno(2);
-        c3.setIdVaga(1);
+        c3.setIdAluno(3);
+        c3.setIdVaga(3);
         candidatas.add(c3);
 
         Candidata c4 = new Candidata();
-        c4.setIdAluno(2);
-        c4.setIdVaga(2);
+        c4.setIdAluno(4);
+        c4.setIdVaga(4);
         candidatas.add(c4);
 
         Candidata c5 = new Candidata();
-        c5.setIdAluno(3);
-        c5.setIdVaga(1);
+        c5.setIdAluno(5);
+        c5.setIdVaga(5);
         candidatas.add(c5);
 
+        Candidata c6 = new Candidata();
+        c6.setIdAluno(6);
+        c6.setIdVaga(1);
+        candidatas.add(c6);
 
         for(int i = 0 ; i < candidatas.size() ; i++) {
             ContentValues dados = new ContentValues();

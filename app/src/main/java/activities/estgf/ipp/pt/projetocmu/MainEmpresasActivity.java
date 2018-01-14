@@ -1,5 +1,6 @@
 package activities.estgf.ipp.pt.projetocmu;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,13 +21,16 @@ public class MainEmpresasActivity extends AppCompatActivity {
     private Button botaoTestar;
     private EmpresaDAO empresaDAo;
     private ListView listaVagasDaEmpresa;
+    private Intent intent;
+    private long idDaEmpresa;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_empresas);
-
+        intent = getIntent();
+        idDaEmpresa = intent.getLongExtra("idDaEmpresa",0);
 
         listaVagasDaEmpresa = (ListView) findViewById(R.id.mainEmpresas_listaDeVagasDaEmpresa_listview);
 
@@ -43,14 +47,14 @@ public class MainEmpresasActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        carregaListaVagas();
+        carregaListaVagas(idDaEmpresa);
     }
 
-    private void carregaListaVagas() {
+    private void carregaListaVagas(long idEmpresa) {
         VagaDAO vagaDAO = new VagaDAO(this);
-        List<Vaga> vagas = vagaDAO.buscaVagas();
+        //List<Vaga> vagas = vagaDAO.buscaVagas();
+        List<Vaga> vagas = vagaDAO.buscaVagasDaEmpresa(idEmpresa);
 
-        //ArrayAdapter<Aluno> arrAdapter = new ArrayAdapter<Aluno>(this, R.layout.list_item, alunos);
         //É o adapter
         VagasEmpregosDaEmpresa adapter = new VagasEmpregosDaEmpresa(vagas,this);
         listaVagasDaEmpresa.setAdapter(adapter);
