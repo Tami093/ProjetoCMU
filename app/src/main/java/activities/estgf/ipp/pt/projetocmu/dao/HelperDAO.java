@@ -53,7 +53,8 @@ public class HelperDAO extends SQLiteOpenHelper {
         //Criacao da tabela ALUNO
         sqlCriacaoTabelas = "CREATE TABLE IF NOT EXISTS ALUNO(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "nome TEXT NOT NULL,"+
-                "email TEXT NOT NULL);";
+                "email TEXT NOT NULL,"+
+                "senha TEXT NOT NULL);";
 
         db.execSQL(sqlCriacaoTabelas);
 
@@ -150,37 +151,44 @@ public class HelperDAO extends SQLiteOpenHelper {
         Aluno a1 = new Aluno();
         a1.setNome("Vitor Hugo");
         a1.setEmail("vh@gmail.com");
+        a1.setSenha("123");
         alunos.add(a1);
 
         Aluno a2 = new Aluno();
         a2.setNome("Tamires Cristina");
         a2.setEmail("tc@gmail.com");
+        a2.setSenha("123");
         alunos.add(a2);
 
         Aluno a3 = new Aluno();
         a3.setNome("Caio Correa");
         a3.setEmail("cc@gmail.com");
+        a3.setSenha("123");
         alunos.add(a3);
 
         Aluno a4 = new Aluno();
         a4.setNome("Tamara Oliveira");
         a4.setEmail("to@gmail.com");
+        a4.setSenha("123");
         alunos.add(a4);
 
         Aluno a5 = new Aluno();
         a5.setNome("Carlos Eduardo");
         a5.setEmail("ce@gmail.com");
+        a5.setSenha("123");
         alunos.add(a5);
 
         Aluno a6 = new Aluno();
         a6.setNome("Janaina Carlinhos");
         a6.setEmail("jc@gmail.com");
+        a6.setSenha("123");
         alunos.add(a6);
 
         for(int i = 0 ; i < alunos.size() ; i++) {
             ContentValues dados = new ContentValues();
             dados.put("nome", alunos.get(i).getNome());
             dados.put("email", alunos.get(i).getEmail());
+            dados.put("senha", alunos.get(i).getSenha());
 
             db.insert("Aluno", null, dados);
         }

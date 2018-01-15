@@ -6,8 +6,9 @@ public class Aluno implements Serializable{
     private long idAluno;
     private String nome;
     private String email;
+    private String senha;
 
-    public long getIdAluno() {return idAluno;}
+    public Long getIdAluno() {return idAluno;}
     public void setIdAluno(long idAluno){this.idAluno = idAluno;}
 
     public String getNome() {
@@ -19,4 +20,11 @@ public class Aluno implements Serializable{
 
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
+
+    public String getSenha() {
+        return senha;
+    }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }

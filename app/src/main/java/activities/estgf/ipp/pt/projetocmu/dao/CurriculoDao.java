@@ -46,10 +46,37 @@ public class CurriculoDao {
         return dados;
     }
 
-    public void exibeCurriculo(Curriculo curriculo){
-        dao = new HelperDAO(context);
+    public Curriculo existeCurriculo (long idDoAluno){
+       dao  = new HelperDAO(context);
+       Curriculo curriculo = new Curriculo();
+
+        Cursor c = dao.getReadableDatabase().rawQuery("SELECT * FROM CURRICULO WHERE idAluno = ?", new String[]{String.valueOf(idDoAluno)});
+        if(c.getCount()>0) {
+            while (c.moveToNext()) {
+                curriculo.setId(c.getLong(c.getColumnIndex("id")));
+                curriculo.setNome(c.getString(c.getColumnIndex("nome")));
+                curriculo.setDataNasc(c.getString(c.getColumnIndex("dataNasc")));
+                curriculo.setSexo(c.getString(c.getColumnIndex("genero")));
+                curriculo.setTelefone(c.getString(c.getColumnIndex("telefone")));
+                curriculo.setEmail(c.getString(c.getColumnIndex("email")));
+                curriculo.setEnderenco(c.getString(c.getColumnIndex("enderenco")));
+                curriculo.setObejtivo(c.getString(c.getColumnIndex("objetivo")));
+                curriculo.setCurso(c.getString(c.getColumnIndex("curso")));
+                curriculo.setEmpresa(c.getString(c.getColumnIndex("empresa")));
+                curriculo.setCargo(c.getString(c.getColumnIndex("cargo")));
+                curriculo.setPerido(c.getString(c.getColumnIndex("periodo")));
+                curriculo.setIdioma1(c.getString(c.getColumnIndex("idioma1")));
+                curriculo.setIdioma2(c.getString(c.getColumnIndex("idioma2")));
+                curriculo.setIdAluno(c.getLong(c.getColumnIndex("idAluno")));
+            }
+        }
+        return curriculo;
     }
 
-
-
+    public void atualizaCurriculo(Curriculo curriculo){
+        dao = new HelperDAO(context);
+        ContentValues dadosAtualizado= pegaDadosCurriculo(curriculo);
+        String[] params = {String.valueOf(curriculo.getId())};
+        dao.getWritableDatabase().update("CURRICULO",dadosAtualizado,"id=?",params);
+    }
 }

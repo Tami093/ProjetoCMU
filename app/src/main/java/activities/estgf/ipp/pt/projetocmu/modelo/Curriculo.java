@@ -19,11 +19,14 @@ public class Curriculo implements Serializable {
     private String curso;
     private String empresa;
     private String cargo;
-    private String perido;
+    private String periodo;
     private String idioma1;
     private String idioma2;
 
-    public Curriculo(long idAluno, String nome, String dataNasc, String sexo, String telefone, String email, String enderenco, String obejtivo, String curso, String empresa, String cargo, String perido, String idioma1, String idioma2) {
+    public Curriculo() {
+    }
+
+    public Curriculo(long idAluno, String nome, String dataNasc, String sexo, String telefone, String email, String enderenco, String obejtivo, String curso, String empresa, String cargo, String periodo, String idioma1, String idioma2) {
         this.idAluno = idAluno;
         this.nome = nome;
         this.dataNasc = dataNasc;
@@ -35,12 +38,12 @@ public class Curriculo implements Serializable {
         this.curso = curso;
         this.empresa = empresa;
         this.cargo = cargo;
-        this.perido = perido;
+        this.periodo = periodo;
         this.idioma1 = idioma1;
         this.idioma2 = idioma2;
     }
 
-    public long getId() {return id;}
+    public Long getId() {return id;}
     public void setId(long id) {this.id = id;}
 
     public long getIdAluno() {return idAluno;}
@@ -76,8 +79,8 @@ public class Curriculo implements Serializable {
     public String getCargo() {return cargo;}
     public void setCargo(String cargo) {this.cargo = cargo;}
 
-    public String getPerido() {return perido;}
-    public void setPerido(String perido) {this.perido = perido;}
+    public String getPerido() {return periodo;}
+    public void setPerido(String perido) {this.periodo = perido;}
 
     public String getIdioma1() {return idioma1;}
     public void setIdioma1(String idioma1) {
