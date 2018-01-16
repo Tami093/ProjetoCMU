@@ -8,10 +8,19 @@
 
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context="activities.estgf.ipp.pt.projetocmu.LoginActivity"
         android:orientation="vertical">
+        <ProgressBar
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="20dip"
+            android:maxHeight="20dip"
+            android:id="@+id/login_status_progressBar" />
 
         <ImageView
             android:layout_width="match_parent"

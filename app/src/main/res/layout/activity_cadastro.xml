@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/cadastro_nome_editText"
-                    android:inputType="text"
+                    android:inputType="textPersonName"
                     android:hint="Digite o nome"/>
             </LinearLayout>
 
@@ -71,6 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/cadastro_email_editText"
+                    android:inputType="textEmailAddress"
                     android:hint="Digite o email"/>
             </LinearLayout>
 
@@ -125,6 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/cadastro_telefone_editText"
+                    android:inputType="phone"
                     android:hint="Digite o telefone da empresa"/>
             </LinearLayout>
 

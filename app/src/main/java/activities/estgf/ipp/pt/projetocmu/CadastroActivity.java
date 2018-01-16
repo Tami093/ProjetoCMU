@@ -11,6 +11,7 @@ import java.sql.SQLException;
 
 import activities.estgf.ipp.pt.projetocmu.dao.EmpresaDAO;
 import activities.estgf.ipp.pt.projetocmu.modelo.Empresa;
+import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -32,6 +33,10 @@ public class CadastroActivity extends AppCompatActivity {
         confirmaSenha = (EditText) findViewById(R.id.cadastro_confirmaSenha_editText);
         botaoCadastrar = (Button) findViewById(R.id.cadastro_botaoCadastro_button);
 
+
+        //mascara do campo telefone
+        MaskEditTextChangedListener maskTEL = new MaskEditTextChangedListener("(###) ###-###-###", telefone);
+        telefone.addTextChangedListener(maskTEL);
         
         botaoCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +63,7 @@ public class CadastroActivity extends AppCompatActivity {
                         empresaDao.insere(empresa);
 
                         Toast.makeText(CadastroActivity.this, "Cadastro Feito Com Sucesso", Toast.LENGTH_SHORT).show();
+                        finish();
                     }catch (android.database.SQLException e){
                         System.out.println(e);
                     }

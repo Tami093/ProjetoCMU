@@ -97,6 +97,7 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
             periodo.setText(curriculo.getPerido());
             idioma1.setText(curriculo.getIdioma1());
             idioma2.setText(curriculo.getIdioma2());
+            setSpinerText(spinnerGenero,curriculo.getSexo(),dadosAdapter);
         }
 
 
@@ -149,16 +150,23 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-    public void  setSpinerText(Spinner spinnerGenero,Curriculo curriculo){
+    public void  setSpinerText(Spinner spinnerGenero, String genero,ArrayAdapter dados){
 
-        for(int i= 0; i < spinnerGenero.getAdapter().getCount(); i++)
-        {
-            if(spinnerGenero.getAdapter().getItem(i).toString().contains(curriculo.getSexo()))
-            {
-                spinnerGenero.setSelection(i);
+        int posicaoArray = 0;
+
+        for(int i=0; (i <= dados.getCount()-1) ; i++){
+
+            if(dados.getItem(i).equals(genero)){
+
+                posicaoArray = i;
+                break;
+            }else{
+                posicaoArray = 0;
             }
         }
+        spinnerGenero.setSelection(posicaoArray);
     }
+
 
     //Calendario data de nascimento
     public void dataDeAniversario(){

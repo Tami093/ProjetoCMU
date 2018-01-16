@@ -52,8 +52,9 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
                     android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:inputType="text"
                     android:id="@+id/curriculo_nomeAluno_editText"
                     android:hint="Digite o nome"/>
             </LinearLayout>
