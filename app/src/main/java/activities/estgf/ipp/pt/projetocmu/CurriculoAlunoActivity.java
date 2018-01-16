@@ -87,7 +87,6 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
         if (curriculo != null){
             nome.setText(curriculo.getNome());
             dataAniversario.setText(curriculo.getDataNasc());
-
             telefone.setText(curriculo.getTelefone());
             email.setText(curriculo.getEmail());
             endereco.setText(curriculo.getEnderenco());
@@ -122,16 +121,11 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
                 else{
                     CurriculoDao dao = new CurriculoDao(CurriculoAlunoActivity.this);
 
-                    if(curriculo != null){
-                        dao.atualizaCurriculo(curriculo);
+                    if(curriculo.getId() != 0 && curriculo.getId() != null){
+                        dao.atualizaCurriculo(setandoCurriculoAtualizado(curriculo));
                         Toast.makeText(CurriculoAlunoActivity.this,"Atualizado Com Sucesso", Toast.LENGTH_SHORT).show();
+
                     }else{
-
-
-                        System.out.println("BBBBBBBBBBBBBBBBBBBBBB");
-                        System.out.println(idDoAluno);
-                        System.out.println("BBBBBBBBBBBBBBBBBBBBBB");
-
                         Curriculo curriculoAux = new Curriculo(idDoAluno,nome.getText().toString(),dataAniversario.getText().toString(),
                                 spinnerGenero.getSelectedItem().toString(),telefone.getText().toString(),
                                 email.getText().toString(),endereco.getText().toString(),objetivo.getText().toString(),curso.getText().toString(),
@@ -195,5 +189,24 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
                 dataAniversario.setText(dataEscolhida);
             }
         };
+    }
+
+    public Curriculo setandoCurriculoAtualizado (Curriculo curriculo){
+
+        curriculo.setNome(nome.getText().toString());
+        curriculo.setDataNasc(dataAniversario.getText().toString());
+        curriculo.setSexo(spinnerGenero.getSelectedItem().toString());
+        curriculo.setTelefone(telefone.getText().toString());
+        curriculo.setEmail(email.getText().toString());
+        curriculo.setEnderenco(endereco.getText().toString());
+        curriculo.setObejtivo(objetivo.getText().toString());
+        curriculo.setCurso(curso.getText().toString());
+        curriculo.setEmpresa(empresa.getText().toString());
+        curriculo.setCargo(cargo.getText().toString());
+        curriculo.setPerido(periodo.getText().toString());
+        curriculo.setIdioma1(idioma1.getText().toString());
+        curriculo.setIdioma2(idioma2.getText().toString());
+
+        return curriculo;
     }
 }

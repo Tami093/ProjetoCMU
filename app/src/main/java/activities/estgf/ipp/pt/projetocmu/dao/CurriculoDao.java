@@ -3,12 +3,9 @@ package activities.estgf.ipp.pt.projetocmu.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 
 import activities.estgf.ipp.pt.projetocmu.modelo.Curriculo;
-
-/**
- * Created by Tamires on 11/01/2018.
- */
 
 public class CurriculoDao {
     private Context context;
@@ -37,8 +34,8 @@ public class CurriculoDao {
         dados.put("objetivo",curriculo.getObejtivo());
         dados.put("curso",curriculo.getCurso());
         dados.put("empresa",curriculo.getEmpresa());
-        dados.put("periodo",curriculo.getPerido());
         dados.put("cargo",curriculo.getCargo());
+        dados.put("periodo",curriculo.getPerido());
         dados.put("idioma1",curriculo.getIdioma1());
         dados.put("idioma2",curriculo.getIdioma2());
         dados.put("idAluno",curriculo.getIdAluno());
@@ -68,15 +65,37 @@ public class CurriculoDao {
                 curriculo.setIdioma1(c.getString(c.getColumnIndex("idioma1")));
                 curriculo.setIdioma2(c.getString(c.getColumnIndex("idioma2")));
                 curriculo.setIdAluno(c.getLong(c.getColumnIndex("idAluno")));
+
             }
         }
+        c.close();
         return curriculo;
     }
 
     public void atualizaCurriculo(Curriculo curriculo){
         dao = new HelperDAO(context);
-        ContentValues dadosAtualizado= pegaDadosCurriculo(curriculo);
-        String[] params = {String.valueOf(curriculo.getId())};
-        dao.getWritableDatabase().update("CURRICULO",dadosAtualizado,"id=?",params);
+        ContentValues dados = pegaDadosCurriculo(curriculo);
+        String[] params = {curriculo.getId().toString()};
+        dao.getWritableDatabase().update("CURRICULO",dados,"id = ?",params);
+        dao.close();
+    }
+
+
+    public void printaCurriculo(Curriculo curriculo){
+        System.out.println(curriculo.getId());
+        System.out.println(curriculo.getNome());
+        System.out.println(curriculo.getDataNasc());
+        System.out.println(curriculo.getSexo());
+        System.out.println(curriculo.getTelefone());
+        System.out.println(curriculo.getEmail());
+        System.out.println(curriculo.getEnderenco());
+        System.out.println(curriculo.getObejtivo());
+        System.out.println(curriculo.getCurso());
+        System.out.println(curriculo.getEmpresa());
+        System.out.println(curriculo.getCargo());
+        System.out.println(curriculo.getPerido());
+        System.out.println(curriculo.getIdioma1());
+        System.out.println(curriculo.getIdioma2());
+        System.out.println(curriculo.getIdAluno());
     }
 }

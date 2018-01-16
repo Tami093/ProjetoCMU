@@ -46,7 +46,7 @@ public class Curriculo implements Serializable {
     public Long getId() {return id;}
     public void setId(long id) {this.id = id;}
 
-    public long getIdAluno() {return idAluno;}
+    public Long getIdAluno() {return idAluno;}
     public void setIdAluno(long idAluno) {this.idAluno = idAluno;}
 
     public String getNome() {return nome;}
@@ -68,8 +68,8 @@ public class Curriculo implements Serializable {
     public void setEnderenco(String enderenco) {this.enderenco = enderenco;}
 
     public String getObejtivo() {return obejtivo;}
-
     public void setObejtivo(String obejtivo) {this.obejtivo = obejtivo;}
+
     public String getCurso() {return curso;}
     public void setCurso(String curso) {this.curso = curso;}
 
@@ -83,8 +83,7 @@ public class Curriculo implements Serializable {
     public void setPerido(String perido) {this.periodo = perido;}
 
     public String getIdioma1() {return idioma1;}
-    public void setIdioma1(String idioma1) {
-        this.idioma1 = idioma1;}
+    public void setIdioma1(String idioma1) {this.idioma1 = idioma1;}
 
     public String getIdioma2() {return idioma2;}
     public void setIdioma2(String idioma2) {this.idioma2 = idioma2;}

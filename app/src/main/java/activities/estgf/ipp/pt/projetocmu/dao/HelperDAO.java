@@ -262,7 +262,6 @@ public class HelperDAO extends SQLiteOpenHelper {
     }
 
 
-
     private void insereCandidataAutomaticoAoCriarBanco (SQLiteDatabase db){
         List<Candidata> candidatas = new ArrayList<Candidata>();
 
