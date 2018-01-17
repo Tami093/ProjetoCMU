@@ -74,10 +74,6 @@ public class EmpresaDAO {
             empresa.setTelefone(c.getString(c.getColumnIndex("telefone")));
             empresa.setNif(c.getString(c.getColumnIndex("nif")));
         }
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
-        System.out.println(empresa.getId());
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
-
         return empresa;
     }
 

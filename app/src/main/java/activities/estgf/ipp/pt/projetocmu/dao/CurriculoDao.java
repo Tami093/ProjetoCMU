@@ -22,25 +22,13 @@ public class CurriculoDao {
         dao.close();
     }
 
-    private ContentValues pegaDadosCurriculo(Curriculo curriculo){
-        ContentValues dados = new ContentValues();
 
-        dados.put("nome",curriculo.getNome());
-        dados.put("dataNasc",curriculo.getDataNasc());
-        dados.put("genero",curriculo.getSexo());
-        dados.put("telefone",curriculo.getTelefone());
-        dados.put("email",curriculo.getEmail());
-        dados.put("enderenco",curriculo.getEnderenco());
-        dados.put("objetivo",curriculo.getObejtivo());
-        dados.put("curso",curriculo.getCurso());
-        dados.put("empresa",curriculo.getEmpresa());
-        dados.put("cargo",curriculo.getCargo());
-        dados.put("periodo",curriculo.getPerido());
-        dados.put("idioma1",curriculo.getIdioma1());
-        dados.put("idioma2",curriculo.getIdioma2());
-        dados.put("idAluno",curriculo.getIdAluno());
-
-        return dados;
+    public void atualizaCurriculo(Curriculo curriculo){
+        dao = new HelperDAO(context);
+        ContentValues dados = pegaDadosCurriculo(curriculo);
+        String[] params = {curriculo.getId().toString()};
+        dao.getWritableDatabase().update("CURRICULO",dados,"id = ?",params);
+        dao.close();
     }
 
     public Curriculo existeCurriculo (long idDoAluno){
@@ -65,19 +53,34 @@ public class CurriculoDao {
                 curriculo.setIdioma1(c.getString(c.getColumnIndex("idioma1")));
                 curriculo.setIdioma2(c.getString(c.getColumnIndex("idioma2")));
                 curriculo.setIdAluno(c.getLong(c.getColumnIndex("idAluno")));
-
             }
         }
         c.close();
         return curriculo;
     }
 
-    public void atualizaCurriculo(Curriculo curriculo){
-        dao = new HelperDAO(context);
-        ContentValues dados = pegaDadosCurriculo(curriculo);
-        String[] params = {curriculo.getId().toString()};
-        dao.getWritableDatabase().update("CURRICULO",dados,"id = ?",params);
-        dao.close();
+
+
+
+    private ContentValues pegaDadosCurriculo(Curriculo curriculo){
+        ContentValues dados = new ContentValues();
+
+        dados.put("nome",curriculo.getNome());
+        dados.put("dataNasc",curriculo.getDataNasc());
+        dados.put("genero",curriculo.getSexo());
+        dados.put("telefone",curriculo.getTelefone());
+        dados.put("email",curriculo.getEmail());
+        dados.put("enderenco",curriculo.getEnderenco());
+        dados.put("objetivo",curriculo.getObejtivo());
+        dados.put("curso",curriculo.getCurso());
+        dados.put("empresa",curriculo.getEmpresa());
+        dados.put("cargo",curriculo.getCargo());
+        dados.put("periodo",curriculo.getPerido());
+        dados.put("idioma1",curriculo.getIdioma1());
+        dados.put("idioma2",curriculo.getIdioma2());
+        dados.put("idAluno",curriculo.getIdAluno());
+
+        return dados;
     }
 
 

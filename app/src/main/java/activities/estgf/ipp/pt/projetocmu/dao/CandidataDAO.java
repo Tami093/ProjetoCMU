@@ -46,4 +46,24 @@ public class CandidataDAO {
 
         return resultado;
     }
+
+    public List<Long> todosAlunosParaAquelaVaga(Long idEmpresa){
+        dao = new HelperDAO(contexto);
+        List<Long> listaIdsAlunos = new ArrayList<Long>();
+
+        Cursor c =
+                dao.getReadableDatabase().rawQuery("SELECT * FROM CANDIDATA WHERE idVagaEmp = ?", new String[]{idEmpresa.toString()} );
+        while (c.moveToNext()){
+            long idAluno = c.getLong(c.getColumnIndex("idAluno"));
+/*
+            System.out.println("DENTRO DO DAO>>>>>>>");
+            System.out.println(idAluno);
+            System.out.println("<<<<<<<DENTRO DO DAO");
+*/
+            listaIdsAlunos.add(idAluno);
+        }
+        c.close();
+
+        return listaIdsAlunos;
+    }
 }

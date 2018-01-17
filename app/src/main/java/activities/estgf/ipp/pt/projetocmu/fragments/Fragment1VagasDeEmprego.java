@@ -25,7 +25,6 @@ public class Fragment1VagasDeEmprego extends Fragment{
         View viewFragVaga = inflater.inflate(R.layout.fragment1_vaga_de_emprego, container, false);
         listaVagas = (ListView) viewFragVaga.findViewById(R.id.fragment1_listaEmpregos_listView);
 
-        //Cria um monte de vagas
         VagaDAO dao = new VagaDAO(container.getContext());
         List<Vaga> vagas = dao.buscaVagas();
 

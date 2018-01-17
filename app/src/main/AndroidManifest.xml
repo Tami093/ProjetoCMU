@@ -43,7 +43,8 @@
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".MainEmpresasActivity"></activity>
+        <activity android:name=".MainEmpresasActivity" />
+        <activity android:name=".AlunosCandidatosActivity"></activity>
     </application>
 
 </manifest>
