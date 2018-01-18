@@ -19,6 +19,7 @@ import activities.estgf.ipp.pt.projetocmu.adapter.AlunosCandidatosAdapter;
 import activities.estgf.ipp.pt.projetocmu.dao.AlunoDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.CurriculoDao;
 import activities.estgf.ipp.pt.projetocmu.modelo.Aluno;
+import activities.estgf.ipp.pt.projetocmu.modelo.Curriculo;
 
 public class Framgent1AlunosCandidatos extends Fragment {
 
@@ -54,11 +55,14 @@ public class Framgent1AlunosCandidatos extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {  //i = Position / l = id
                 Aluno aluno = (Aluno) parent.getItemAtPosition(i); //Pegando o item da prova selecionado
-                Toast.makeText(getContext(), "Clicou no Aluno : " + aluno, Toast.LENGTH_SHORT).show();
                 CurriculoDao curriculoDao = new CurriculoDao(getContext());
+                Curriculo curriculo = new Curriculo();
+
+                Toast.makeText(getContext(), "Clicou no Aluno : " + aluno, Toast.LENGTH_SHORT).show();
 
                 AlunosCandidatosActivity alunosCandidatosActivity = (AlunosCandidatosActivity) getActivity();
                 alunosCandidatosActivity.selecionaAluno(curriculoDao.existeCurriculo(aluno.getIdAluno()));
+
             }
         });
 

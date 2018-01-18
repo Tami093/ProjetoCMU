@@ -19,7 +19,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="activities.estgf.ipp.pt.projetocmu.CurriculoAlunoActivity"
+            tools:context="activities.estgf.ipp.pt.projetocmu.AlunosCandidatosActivity"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,16 +49,14 @@
                     android:layout_marginLeft="5sp"
                     android:src="@drawable/ic_person_black_24dp"
                     android:layout_gravity="center"/>
-                <EditText
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2sp"
+                    android:layout_marginTop="4sp"
                     android:textSize="14sp"
-                    android:inputType="text"
-                    android:id="@+id/curriculo_nomeAluno_editText"
-                    android:hint="Digite o nome"/>
+                    android:id="@+id/alunosCandidatos_nomeAluno_textView"/>
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -75,11 +73,11 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:layout_marginTop="4sp"
                     android:textSize="14sp"
-                    android:layout_marginLeft="10sp"
                     android:layout_gravity="center"
-                    android:id="@+id/curriculo_dataAniversario_textView"
-                    android:hint="Clique para selecionar a data de Aniversario" />
+                    android:id="@+id/alunosCandidatos_dataAniversarioAluno_textView" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -93,10 +91,13 @@
                     android:layout_marginLeft="5sp"
                     android:layout_marginTop="5sp"
                     android:src="@drawable/ic_wc_black_24dp"/>
-                <Spinner
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/curriculo_genero_spinner"/>
+                    android:layout_marginLeft="2sp"
+                    android:layout_marginTop="5sp"
+                    android:textSize="14sp"
+                    android:id="@+id/alunosCandidatos_sexoAluno_textView"/>
 
             </LinearLayout>
 
@@ -113,14 +114,13 @@
                     android:layout_marginTop="5sp"
                     android:src="@drawable/ic_smartphone_black_24dp"/>
 
-                <EditText
+                <TextView
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2sp"
+                    android:layout_marginTop="7sp"
                     android:textSize="14sp"
-                    android:inputType="numberSigned"
-                    android:hint="(000)000-000-000"
-                    android:id="@+id/curriculo_telefoneAluno_editText"/>
+                    android:id="@+id/alunosCandidatos_telefoneALuno_textView"/>
             </LinearLayout>
 
             <LinearLayout
@@ -135,13 +135,13 @@
                     android:layout_marginLeft="5sp"
                     android:layout_marginTop="5sp"
                     android:src="@drawable/ic_email_black_24dp"/>
-                <EditText
+                <TextView
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2sp"
+                    android:layout_marginTop="7sp"
                     android:textSize="14sp"
-                    android:id="@+id/curriculo_emailAluno_editText"
-                    android:hint="Digite o email"/>
+                    android:id="@+id/alunosCandidatos_emailAluno_textView"/>
             </LinearLayout>
 
             <LinearLayout
@@ -156,14 +156,15 @@
                     android:layout_marginLeft="5sp"
                     android:layout_marginTop="5sp"
                     android:src="@drawable/ic_place_black_24dp"/>
-                <EditText
+                <TextView
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2sp"
+                    android:layout_marginTop="7sp"
                     android:textSize="14sp"
-                    android:id="@+id/curriculo_enderecoAluno_editText"
-                    android:hint="Digite o endereco"/>
+                    android:id="@+id/alunosCandidatos_enderecoAluno_textView" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -180,6 +181,7 @@
                     android:layout_marginLeft="2sp"
                     android:text="Objetivo " />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -192,14 +194,15 @@
                     android:layout_marginLeft="5sp"
                     android:src="@drawable/ic_work_black_24dp"
                     android:layout_gravity="center"/>
-                <EditText
+                <TextView
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2sp"
+                    android:layout_marginTop="5sp"
                     android:textSize="14sp"
-                    android:hint="Digite o cargo"
-                    android:id="@+id/curriculo_objetivo_editText"/>
+                    android:id="@+id/alunosCandidatos_objetivoAluno_textView"/>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -215,6 +218,7 @@
                     android:layout_marginLeft="5sp"
                     android:text="Formação " />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -227,13 +231,13 @@
                     android:layout_marginLeft="5sp"
                     android:src="@drawable/ic_school_black_24dp"
                     android:layout_gravity="center"/>
-                <EditText
+                <TextView
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2sp"
+                    android:layout_marginTop="4sp"
                     android:textSize="14sp"
-                    android:hint="Digite o nome do curso"
-                    android:id="@+id/curriculo_formcao_editText"/>
+                    android:id="@+id/alunosCandidatos_formacaoAluno_textView"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -258,7 +262,6 @@
                 android:layout_marginLeft="2sp"
                 android:layout_marginTop="2sp"
                 android:orientation="horizontal">
-
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -266,13 +269,13 @@
                     android:layout_marginLeft="5sp"
                     android:src="@drawable/ic_business_black_24dp" />
 
-                <EditText
-                    android:id="@+id/curriculo_empresa_editText"
+                <TextView
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_marginTop="4sp"
                     android:layout_marginLeft="2sp"
-                    android:hint="Digite o nome da empresa"
-                    android:textSize="14sp" />
+                    android:id="@+id/alunosCandidatos_nomeEmpresaTrablahouAluno_textView"/>
 
             </LinearLayout>
             <LinearLayout
@@ -287,18 +290,18 @@
                     android:layout_marginLeft="5sp"
                     android:src="@drawable/ic_work_black_24dp"
                     android:layout_gravity="center"/>
-                <EditText
+                <TextView
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_marginTop="3sp"
                     android:layout_marginLeft="2sp"
-                    android:textSize="14sp"
-                    android:hint="Digite o cargo"
-                    android:id="@+id/curriculo_cargo_editText"/>
+                    android:id="@+id/alunosCandidatos_cargoAluno_textView"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2sp"
+                android:layout_marginTop="3sp"
                 android:layout_marginLeft="2sp"
                 android:orientation="horizontal">
                 <TextView
@@ -307,12 +310,12 @@
                     android:textStyle="bold"
                     android:layout_marginLeft="5sp"
                     android:text="Duração: "/>
-                <EditText
+                <TextView
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
+                    android:textSize="15sp"
                     android:layout_marginLeft="2sp"
-                    android:textSize="14sp"
-                    android:id="@+id/curriculo_duracao_editText"/>
+                    android:id="@+id/alunosCandidatos_duracaoTabalhoAluno_textView"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -339,12 +342,13 @@
                     android:layout_marginLeft="5sp"
                     android:src="@drawable/ic_language_black_24dp"
                     android:layout_gravity="center"/>
-                <EditText
+                <TextView
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_marginTop="2sp"
                     android:layout_marginLeft="2sp"
-                    android:textSize="14sp"
-                    android:id="@+id/curriculo_idioma1_editText"/>
+                    android:id="@+id/alunosCandidatos_idioma1Aluno_textView"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -361,22 +365,10 @@
                 <EditText
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_marginTop="2sp"
                     android:layout_marginLeft="2sp"
-                    android:textSize="14sp"
-                    android:id="@+id/curriculo_idioma2_editText"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5sp"
-                android:layout_marginBottom="6sp"
-                android:gravity="center_horizontal">
-
-                <Button
-                    android:id="@+id/curriculo_botaoSalvar_button"
-                    android:layout_width="150sp"
-                    android:layout_height="wrap_content"
-                    android:text="Salvar" />
+                    android:id="@+id/alunosCandidatos_idioma2Aluno_textView"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
