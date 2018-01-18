@@ -37,6 +37,9 @@ public class Fragment1VagasDeEmprego extends Fragment{
         }
 
         return viewFragVaga;
+
+
+
     }
 
 }
