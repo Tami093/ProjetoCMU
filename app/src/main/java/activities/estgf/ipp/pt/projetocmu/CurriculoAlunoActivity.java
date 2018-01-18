@@ -1,5 +1,6 @@
 package activities.estgf.ipp.pt.projetocmu;
 
+import android.app.ActionBar;
 import android.app.DatePickerDialog;
 import android.content.ContentUris;
 import android.content.Context;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import activities.estgf.ipp.pt.projetocmu.dao.CurriculoDao;
 import activities.estgf.ipp.pt.projetocmu.dao.EmpresaDAO;
@@ -39,12 +41,15 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
     private Spinner spinnerGenero;
     private DatePickerDialog.OnDateSetListener dataAniversarioListener;
     private Intent intentVagasDeEmprego;
+    private boolean nomeEvalido,emailEvalido;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_curriculo_aluno);
+        ActionBar teste = getActionBar();
+        setTitle("Curriculo");
 
         intentVagasDeEmprego = getIntent();
         final long idDoAluno = intentVagasDeEmprego.getLongExtra("idDoAluno", 0);
@@ -104,14 +109,18 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
         // Calendario data nascimento
         dataDeAniversario();
         //botao salvar onClick
+        nomeEvalido = Pattern.matches("^[A-Za-z\\s]+(\\s[A-Za-z]+)$",nome.getText());
+        emailEvalido = Pattern.matches("\"^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@\"\n" +
+                                            "\t\t+ \"[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$",email.getText());
+
         botaoSalvar = (Button)findViewById(R.id.curriculo_botaoSalvar_button);
         botaoSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(nome.getText().toString().equals("") || nome.getText().toString().equals(null)
+                if(nome.getText().toString().equals("") || nome.getText().toString().equals(null) || nomeEvalido
                         ||dataAniversario.getText().toString().equals("") || dataAniversario.getText().toString().equals(null)
                         ||spinnerGenero.getSelectedItem().toString().equals("")|| spinnerGenero.getSelectedItem().toString().equals(null)
-                        ||telefone.getText().toString().equals("") || telefone.getText().toString().equals(null)
+                        ||telefone.getText().toString().equals("") || telefone.getText().toString().equals(null) || emailEvalido
                         ||email.getText().toString().equals("") || email.getText().toString().equals(null)
                         ||endereco.getText().toString().equals("") || endereco.getText().toString().equals(null)
                         ||objetivo.getText().toString().equals("") || objetivo.getText().toString().equals(null)
@@ -217,4 +226,5 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
 
         return curriculo;
     }
+
 }
