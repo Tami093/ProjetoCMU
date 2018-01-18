@@ -16,6 +16,7 @@ public class AlunoDAO {
 
     public void insereAluno(Aluno aluno){
         dao = new HelperDAO(contexto);
+
         ContentValues values = new ContentValues();
         values.put("nome",aluno.getNome());
         values.put("email",aluno.getNome());
@@ -27,6 +28,7 @@ public class AlunoDAO {
 
     public boolean existeAluno(String email, String senha){
         dao = new HelperDAO(contexto);
+
         Cursor c =  dao.getReadableDatabase().rawQuery("SELECT * FROM ALUNO WHERE email = ? and senha = ?", new String[]{email,senha} );
         int resultado = c.getCount();
         c.close();
@@ -35,6 +37,8 @@ public class AlunoDAO {
     }
 
     public long pegaIdAluno(String email, String senha){
+        dao = new HelperDAO(contexto);
+
         Cursor c =  dao.getReadableDatabase().rawQuery("SELECT * FROM ALUNO WHERE email = ? and senha = ?", new String[]{email,senha} );
         Aluno aluno = new Aluno();
 
@@ -45,8 +49,23 @@ public class AlunoDAO {
             aluno.setSenha(c.getString(c.getColumnIndex("senha")));
 
         }
+        c.close();
         return aluno.getIdAluno();
     }
 
+    public Aluno pegarUnicoAluno (long idAluno){
+        dao = new HelperDAO(contexto);
 
+        Cursor c =  dao.getReadableDatabase().rawQuery("SELECT * FROM ALUNO WHERE id = ?", new String[]{String.valueOf(idAluno)} );
+        Aluno aluno = new Aluno();
+
+        while (c.moveToNext()) {
+            aluno.setIdAluno(c.getLong(c.getColumnIndex("id")));
+            aluno.setNome(c.getString(c.getColumnIndex("nome")));
+            aluno.setEmail(c.getString(c.getColumnIndex("email")));
+            aluno.setSenha(c.getString(c.getColumnIndex("senha")));
+        }
+        c.close();
+        return aluno;
+    }
 }

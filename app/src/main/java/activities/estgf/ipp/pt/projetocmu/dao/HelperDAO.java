@@ -122,9 +122,9 @@ public class HelperDAO extends SQLiteOpenHelper {
         empresas.add(e1);
 
         Empresa e2 = new Empresa();
-        e2.setSenha("senhaPingoDoce");
+        e2.setSenha("b");
         e2.setNome("Pingo Doce");
-        e2.setEmail("pingoDoce@pingoDoce.com");
+        e2.setEmail("b");
         e2.setEndereco("Rua D. Gomes D Aciegas, Felgueiras");
         e2.setTelefone("987456321");
         e2.setNif("45236995485");
