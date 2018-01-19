@@ -60,7 +60,7 @@ public class VagasEmpregosDaEmpresa extends BaseAdapter {
 
         TextView qtdPessoasParaVaga = (TextView) viewInflate.findViewById(R.id.listItemVagasEmpregoDaEmpresa_qtdPessoasParaVaga_textView);
         //qtdPessoasParaVaga.setText(String.valueOf(vaga.getIdEmpresa()));
-        qtdPessoasParaVaga.setText(candidataDAO.quantidadeDeCandidatos(String.valueOf(vaga.getId())));
+        qtdPessoasParaVaga.setText("Candidatos Para Vaga: " + candidataDAO.quantidadeDeCandidatos(String.valueOf(vaga.getId())));
 
         Button botaoVerCandidatos = (Button) viewInflate.findViewById(R.id.listItemVagasEmpregoDaEmpresa_verificarParticipantes_button);
         botaoVerCandidatos.setOnClickListener(new View.OnClickListener() {

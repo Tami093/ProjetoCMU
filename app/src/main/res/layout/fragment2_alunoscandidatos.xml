@@ -362,7 +362,7 @@
                     android:layout_marginLeft="5sp"
                     android:src="@drawable/ic_language_black_24dp"
                     android:layout_gravity="center"/>
-                <EditText
+                <TextView
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
                     android:textSize="15sp"

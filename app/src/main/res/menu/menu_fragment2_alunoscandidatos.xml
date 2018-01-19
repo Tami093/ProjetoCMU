@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+<item
+        android:id="@+id/fragment2_ligarAlunoCandidato"
+        android:title="Ligar "
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/fragment2_enviarSMSAlunoCandidato"
+        android:title="Enviar SMS"
+        app:showAsAction="never"/>
+    <item
+    android:id="@+id/fragment2_enviarEmailAlunoCandidato"
+    android:title="Enviar email"
+    app:showAsAction="never"/>
+
+</menu>
