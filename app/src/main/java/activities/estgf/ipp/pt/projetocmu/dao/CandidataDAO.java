@@ -1,6 +1,7 @@
 package activities.estgf.ipp.pt.projetocmu.dao;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
@@ -65,5 +66,19 @@ public class CandidataDAO {
         c.close();
 
         return listaIdsAlunos;
+    }
+    public ContentValues pegaDadosCandidata(Candidata candidata){
+        ContentValues dadosCandidata = new ContentValues();
+
+        dadosCandidata.put("idAluno",candidata.getIdAluno());
+        dadosCandidata.put("idVagaEmp",candidata.getIdVaga());
+
+        return dadosCandidata;
+    }
+    public  void insereCandidatura(Candidata candidata){
+        dao = new HelperDAO(contexto);
+        ContentValues dados = pegaDadosCandidata(candidata);
+        dao.getWritableDatabase().insert("CANDIDATA",null,dados);
+        dao.close();
     }
 }
