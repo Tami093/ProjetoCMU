@@ -100,31 +100,6 @@
                     android:id="@+id/curriculo_genero_spinner"/>
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2sp"
-                android:layout_marginTop="2sp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5sp"
-                    android:src="@drawable/ic_work_black_24dp" />
-
-                <EditText
-                    android:id="@+id/curriculo_cargo_editText"
-                    android:layout_width="300sp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2sp"
-                    android:hint="Digite o cargo"
-                    android:inputType="text"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -305,6 +280,30 @@
                     android:inputType="text"
                     android:textSize="14sp" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2sp"
+                android:layout_marginTop="2sp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5sp"
+                    android:src="@drawable/ic_work_black_24dp" />
+
+                <EditText
+                    android:id="@+id/curriculo_cargo_editText"
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:hint="Digite o cargo ocupado"
+                    android:inputType="text"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
