@@ -43,7 +43,7 @@ public class VagasEmpregoAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View views, ViewGroup viewGroup) {
-
+        boolean botaoCandidatarse = false;
         final Vaga vaga = vagas.get(position);
 
         CandidataDAO candidataDAO = new CandidataDAO(context);
@@ -74,20 +74,22 @@ public class VagasEmpregoAdapter extends BaseAdapter {
             botaoCandidatar.setBackgroundColor(Color.parseColor("#ffffff"));
             botaoCandidatar.setText("Ja está candidatado");
         }else{
+            botaoCandidatarse = true;
+        }
+        if(botaoCandidatarse) {
             botaoCandidatar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     //Toast.makeText(context,"Tocou no Botao",Toast.LENGTH_LONG).show();
                     Intent vaiParaDetalhesVaga = new Intent(context, DetalhesDaVagaActivity.class);
                     vaiParaDetalhesVaga.putExtra("vaga", vaga);
-                    vaiParaDetalhesVaga.putExtra("idDoAluno",idAluno);
+                    vaiParaDetalhesVaga.putExtra("idDoAluno", idAluno);
                     context.startActivity(vaiParaDetalhesVaga);
                 }
             });
         }
-
-
-
         return viewInflate;
     }
+
+
 }

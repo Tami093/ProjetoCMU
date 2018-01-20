@@ -34,11 +34,8 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vagas_de_emprego);
 
-
         intentLogin = getIntent();
         idDoAluno = intentLogin.getLongExtra("idDoAluno",0);
-
-
 
         List<Fragment> fragments = new Vector<>();
         fragments.add(Fragment.instantiate(this, Fragment1VagasDeEmprego.class.getName()));
@@ -67,14 +64,33 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
             }
             @Override
             public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+                pager.setCurrentItem(tab.getPosition());
             }
         };
-
         actionBar.addTab(actionBar.newTab().setText("Sugeridos").setTabListener(tabListener));
         actionBar.addTab(actionBar.newTab().setText("Maps").setTabListener(tabListener));
-
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //Reload Fragmentos
+        List<Fragment> fragments = new Vector<>();
+        fragments.add(Fragment.instantiate(this, Fragment1VagasDeEmprego.class.getName()));
+        fragments.add(Fragment.instantiate(this, Fragment2VagasDeEmprego.class.getName()));
+
+        //Pasando valor no fragmento1
+        Bundle bundle = new Bundle();
+        bundle.putLong("idDoAluno", idDoAluno);
+        fragments.get(0).setArguments(bundle);
+
+        PageAdapter adapter = new PageAdapter(getSupportFragmentManager(), fragments);
+        final ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
+
+        pager.setAdapter(adapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -94,12 +110,6 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
                 vaiParaCurriculo.putExtra("idDoAluno",idDoAluno);
                 startActivity(vaiParaCurriculo);
                 break;
-            /*
-            case R.id.menu_baixarProvas:
-                Intent vaiParaProvas = new Intent(this, ProvasActivity.class);
-                startActivity(vaiParaProvas);
-                break;
-            */
         }
         return super.onOptionsItemSelected(item);
     }
