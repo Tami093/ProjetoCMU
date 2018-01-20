@@ -67,6 +67,27 @@ public class CandidataDAO {
 
         return listaIdsAlunos;
     }
+
+
+    public  void insereCandidatura(Candidata candidata){
+        dao = new HelperDAO(contexto);
+        ContentValues dados = pegaDadosCandidata(candidata);
+
+        dao.getWritableDatabase().insert("CANDIDATA",null,dados);
+        dao.close();
+    }
+
+    public boolean alunoCandidatoAVaga (long idVagaEmp, long idAluno){
+        dao = new HelperDAO(contexto);
+        Cursor c = dao.getReadableDatabase().
+                rawQuery("SELECT * FROM CANDIDATA WHERE idVagaEmp = ? and idAluno = ?",
+                        new String[]{String.valueOf(idVagaEmp), String.valueOf(idAluno)} );
+        if(c.getCount() > 0){
+            return true;
+        }
+        return false;
+    }
+
     public ContentValues pegaDadosCandidata(Candidata candidata){
         ContentValues dadosCandidata = new ContentValues();
 
@@ -74,11 +95,5 @@ public class CandidataDAO {
         dadosCandidata.put("idVagaEmp",candidata.getIdVaga());
 
         return dadosCandidata;
-    }
-    public  void insereCandidatura(Candidata candidata){
-        dao = new HelperDAO(contexto);
-        ContentValues dados = pegaDadosCandidata(candidata);
-        dao.getWritableDatabase().insert("CANDIDATA",null,dados);
-        dao.close();
     }
 }

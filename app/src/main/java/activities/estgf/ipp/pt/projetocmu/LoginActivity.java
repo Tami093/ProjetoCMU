@@ -133,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         Intent vaiParaMainEmpresasActivy = new Intent(LoginActivity.this, MainEmpresasActivity.class);
                         vaiParaMainEmpresasActivy.putExtra("idDaEmpresa",empresa.getId());
+                        vaiParaMainEmpresasActivy.putExtra("nomeEmpresa",empresa.getNome());
                         startActivity(vaiParaMainEmpresasActivy);
                         //Toast.makeText(LoginActivity.this,"!!Esta Cadastrado No Banco de Dados!!", Toast.LENGTH_LONG).show();
                     }else{

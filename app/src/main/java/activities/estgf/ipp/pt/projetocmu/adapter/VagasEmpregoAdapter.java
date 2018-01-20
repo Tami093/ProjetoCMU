@@ -1,28 +1,35 @@
 package activities.estgf.ipp.pt.projetocmu.adapter;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
+import activities.estgf.ipp.pt.projetocmu.DetalhesDaVagaActivity;
 import activities.estgf.ipp.pt.projetocmu.R;
+import activities.estgf.ipp.pt.projetocmu.dao.CandidataDAO;
+import activities.estgf.ipp.pt.projetocmu.modelo.Candidata;
 import activities.estgf.ipp.pt.projetocmu.modelo.Vaga;
 
 
 public class VagasEmpregoAdapter extends BaseAdapter {
 
-
     private final List<Vaga> vagas;
     private final Context context;
+    private final Long idAluno;
 
-    public VagasEmpregoAdapter(Context context, List<Vaga> vagas) {
+    public VagasEmpregoAdapter(Context context, List<Vaga> vagas, Long idAluno) {
         this.vagas = vagas;
         this.context = context;
+        this.idAluno = idAluno;
     }
 
     @Override
@@ -37,7 +44,9 @@ public class VagasEmpregoAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View views, ViewGroup viewGroup) {
 
-        Vaga vaga = vagas.get(position);
+        final Vaga vaga = vagas.get(position);
+
+        CandidataDAO candidataDAO = new CandidataDAO(context);
 
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -57,6 +66,27 @@ public class VagasEmpregoAdapter extends BaseAdapter {
 
         TextView quantidadeSalario  = (TextView) viewInflate.findViewById(R.id.listItem_quantidadeSalario_textView);
         quantidadeSalario.setText(vaga.getSalario());
+
+        Button botaoCandidatar = (Button) viewInflate.findViewById(R.id.listItem_botaoCandidatar_button);
+        if(candidataDAO.alunoCandidatoAVaga(vaga.getId(), idAluno)){
+            System.out.println("PASSOU NO TRUE");
+            botaoCandidatar.setClickable(false);
+            botaoCandidatar.setBackgroundColor(Color.parseColor("#ffffff"));
+            botaoCandidatar.setText("Ja está candidatado");
+        }else{
+            botaoCandidatar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //Toast.makeText(context,"Tocou no Botao",Toast.LENGTH_LONG).show();
+                    Intent vaiParaDetalhesVaga = new Intent(context, DetalhesDaVagaActivity.class);
+                    vaiParaDetalhesVaga.putExtra("vaga", vaga);
+                    vaiParaDetalhesVaga.putExtra("idDoAluno",idAluno);
+                    context.startActivity(vaiParaDetalhesVaga);
+                }
+            });
+        }
+
+
 
         return viewInflate;
     }
