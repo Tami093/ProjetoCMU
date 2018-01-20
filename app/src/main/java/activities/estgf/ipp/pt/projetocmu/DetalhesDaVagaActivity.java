@@ -64,7 +64,9 @@ public class DetalhesDaVagaActivity extends AppCompatActivity {
         });
 
     }
-    
+
+
+
     public void preencheCampos (Vaga vaga){
         nomeVaga.setText(vaga.getNomeVaga());
         nomeEmpresa.setText(vaga.getNomeEmpresa());
@@ -74,12 +76,20 @@ public class DetalhesDaVagaActivity extends AppCompatActivity {
     }
 
     public void enviarNotificacao(String nomeVaga, String nomeAluno){
+        //Os comentarios serve para abrir uma intent ao cliclar na notificacao. Nao implementado
+
+        //Intent intent1 = new Intent(this, Activity2.class);
+        //intent1.putExtra("key" , "value");
+        //PendingIntent pendingIntent = PendingIntent.getActivity(this,0, intent1 ,0);
+        //PendingIntent pendingIntent = PendingIntent.getActivity(this,0, intent1 ,PendingIntent.FLAG_UPDATE_CURRENT); //passando valor da chave valor
+
+
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this);
         mBuilder.setSmallIcon(R.drawable.ic_work_black_24dp);
         mBuilder.setContentTitle("Novo Aluno interessado na Vaga : " + nomeVaga);
         mBuilder.setContentText("O aluno "+ nomeAluno+ " Candidatou-se a vaga.");
         mBuilder.setWhen(Calendar.getInstance().getTimeInMillis() - 3600000);
-        // mBuilder.setContentIntent(pendingIntent);
+        //mBuilder.setContentIntent(pendingIntent);
         mBuilder.setAutoCancel(true);
 
         notificationId = 001;
