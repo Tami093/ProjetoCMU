@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">ProjetoCMU</string>
-    <string name="app_dei_nome">Portal de Estagio</string>
+    <string name="app_dei_nome">Portal de Estágio</string>
     <string name="title_activity_fragment2_mapa_do_vagas_de_emprego">Map</string>
 </resources>
