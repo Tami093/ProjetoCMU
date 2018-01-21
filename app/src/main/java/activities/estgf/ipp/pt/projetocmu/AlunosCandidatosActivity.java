@@ -18,6 +18,7 @@ public class AlunosCandidatosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alunos_candidatos);
+        getSupportActionBar().setTitle("Alunos Candidatos");
 
         intentVagasEmprego = getIntent();
         long [] ids = intentVagasEmprego.getLongArrayExtra("listaIdsAlunos");

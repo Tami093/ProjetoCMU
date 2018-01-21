@@ -29,6 +29,7 @@ public class DetalhesDaVagaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes_da_vaga);
+        getSupportActionBar().setTitle("Detalhes da Vaga");
 
         intentVagasDeEmprego = getIntent();
         final Vaga vaga = (Vaga) intentVagasDeEmprego.getSerializableExtra("vaga");

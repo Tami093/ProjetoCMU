@@ -22,6 +22,7 @@ public class NovaVagaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nova_vaga);
+        getSupportActionBar().setTitle("Nova Vaga");
 
         intentMainEmpresas = getIntent();
         final long idEmpresa = intentMainEmpresas.getLongExtra("idEmpresa",0);
