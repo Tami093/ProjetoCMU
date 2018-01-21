@@ -190,25 +190,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    /*
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_login_activity, menu);
-        return true;
+    protected void onResume() {
+        super.onResume();
+
+        login.setText("");
+        senha.setText("");
+
     }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menuLogin_addicionarBanco:
-                //Toast.makeText(LoginActivity.this, "Tocou em BancoDados", Toast.LENGTH_LONG).show();
-                VagaDAO x = new VagaDAO(LoginActivity.this);
-                x.insereVagasAutomaticoAoCriarBanco();
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-    */
 }
