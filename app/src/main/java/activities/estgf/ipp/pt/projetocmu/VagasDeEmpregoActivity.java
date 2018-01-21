@@ -68,7 +68,7 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
                 pager.setCurrentItem(tab.getPosition());
             }
         };
-        actionBar.addTab(actionBar.newTab().setText("Sugeridos").setTabListener(tabListener));
+        actionBar.addTab(actionBar.newTab().setText("Vagas").setTabListener(tabListener));
         actionBar.addTab(actionBar.newTab().setText("Maps").setTabListener(tabListener));
     }
 
