@@ -93,8 +93,8 @@ public class HelperDAO extends SQLiteOpenHelper {
         insereEmpresasAutomaticoAoCriarBanco(db);
         insereVagasAutomaticoAoCriarBanco(db);
         insereAlunosAutomaticoAoCriarBanco(db);
-        insereCandidataAutomaticoAoCriarBanco(db);
         insereCurriculosAutomaticoAoCriarBanco(db);
+        insereCandidataAutomaticoAoCriarBanco(db);
     }
 
     @Override
@@ -114,7 +114,7 @@ public class HelperDAO extends SQLiteOpenHelper {
         List<Empresa> empresas = new ArrayList<Empresa>();
 
         Empresa e1 = new Empresa();
-        e1.setSenha("continente");
+        e1.setSenha("1234");
         e1.setNome("Continente");
         e1.setEmail("continente@gmail.com");
         e1.setEndereco("R. Prof. Joaquim Barros Leite, Felgueiras");
@@ -123,7 +123,7 @@ public class HelperDAO extends SQLiteOpenHelper {
         empresas.add(e1);
 
         Empresa e2 = new Empresa();
-        e2.setSenha("pingodoce");
+        e2.setSenha("1234");
         e2.setNome("Pingo Doce");
         e2.setEmail("pingodoce@gmail.com");
         e2.setEndereco("Rua D. Gomes D Aciegas, Felgueiras");
@@ -202,7 +202,7 @@ public class HelperDAO extends SQLiteOpenHelper {
         v1.setLocalTrabalho("Rua de Santa Quiteria , Felgueiras");
         v1.setNomeEmpresa("Continente");
         v1.setSalario("1000");
-        v1.setNomeVaga("Vaga Para Caixa");
+        v1.setNomeVaga("Caixa");
         v1.setTipoVaga("Estagiario");
         v1.setVagaAtiva("true");
         v1.setIdEmpresa(1);
@@ -210,9 +210,9 @@ public class HelperDAO extends SQLiteOpenHelper {
 
         Vaga v2 = new Vaga();
         v2.setLocalTrabalho("Rua de Belem , Felgueiras");
-        v2.setNomeEmpresa("Quiosque legal");
-        v2.setSalario("753");
-        v2.setNomeVaga("Vaga Para Garconete");
+        v2.setNomeEmpresa("Mini Mercados Joaquin");
+        v2.setSalario("2250");
+        v2.setNomeVaga("Gerente");
         v2.setTipoVaga("Efetivo");
         v2.setVagaAtiva("true");
         v2.setIdEmpresa(1);
@@ -222,7 +222,7 @@ public class HelperDAO extends SQLiteOpenHelper {
         v3.setLocalTrabalho("Rua Professor Joaquim Barros Leite, Felgueiras");
         v3.setNomeEmpresa("Campo Futebol Felgueiras");
         v3.setSalario("1254");
-        v3.setNomeVaga("Vaga para cortador de grama");
+        v3.setNomeVaga("Cortador de grama");
         v3.setTipoVaga("Efetivado");
         v3.setVagaAtiva("true");
         v3.setIdEmpresa(2);
@@ -232,7 +232,7 @@ public class HelperDAO extends SQLiteOpenHelper {
         v4.setLocalTrabalho("Rua do Curral , Felgueiras");
         v4.setNomeEmpresa("ESTG");
         v4.setSalario("850");
-        v4.setNomeVaga("Vaga Para TI");
+        v4.setNomeVaga("Suporte de TI");
         v4.setTipoVaga("Estagiario");
         v4.setVagaAtiva("true");
         v4.setIdEmpresa(2);
@@ -240,7 +240,7 @@ public class HelperDAO extends SQLiteOpenHelper {
 
         Vaga v5 = new Vaga();
         v5.setLocalTrabalho("Avenida Doutor Magalhães Lemos , Felgueiras");
-        v5.setNomeEmpresa("Pastelarias Fixe");
+        v5.setNomeEmpresa("Pastelarias");
         v5.setSalario("1739");
         v5.setNomeVaga("Pasteleiro");
         v5.setTipoVaga("Efetivado");

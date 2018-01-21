@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             dao = new HelperDAO(this);
             conn = dao.getReadableDatabase();
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
-            dlg.setMessage("Conexao criada com sucesso!");
+            //dlg.setMessage("Conexao criada com sucesso!");
             dlg.setNeutralButton("OK",null);
             dlg.show();
         }
@@ -90,9 +90,9 @@ public class LoginActivity extends AppCompatActivity {
                     textoSeparadorOu.setVisibility(View.INVISIBLE);
                 }else if(id == R.id.login_empresa_radio){
                     //Toast.makeText(LoginActivity.this, "EMPRESA RADIO" , Toast.LENGTH_LONG).show();
-                    botaoEsqueceuSenha.setVisibility(View.VISIBLE);
+                    //botaoEsqueceuSenha.setVisibility(View.VISIBLE);
                     botaoRegistrar.setVisibility(View.VISIBLE);
-                    textoSeparadorOu.setVisibility(View.VISIBLE);
+                    //textoSeparadorOu.setVisibility(View.VISIBLE);
                 }
             }
         });

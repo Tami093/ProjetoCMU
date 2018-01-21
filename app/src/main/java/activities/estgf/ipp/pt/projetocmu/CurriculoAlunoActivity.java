@@ -113,10 +113,10 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
         botaoSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(nome.getText().toString().equals("") || nome.getText().toString().equals(null) || nomeEvalido
+                if(nome.getText().toString().equals("") || nome.getText().toString().equals(null)
                         ||dataAniversario.getText().toString().equals("") || dataAniversario.getText().toString().equals(null)
                         ||spinnerGenero.getSelectedItem().toString().equals("")|| spinnerGenero.getSelectedItem().toString().equals(null)
-                        ||telefone.getText().toString().equals("") || telefone.getText().toString().equals(null) || emailEvalido
+                        ||telefone.getText().toString().equals("") || telefone.getText().toString().equals(null)
                         ||email.getText().toString().equals("") || email.getText().toString().equals(null)
                         ||endereco.getText().toString().equals("") || endereco.getText().toString().equals(null)
                         ||objetivo.getText().toString().equals("") || objetivo.getText().toString().equals(null)
@@ -137,7 +137,7 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
                                 email.getText().toString(),endereco.getText().toString(),objetivo.getText().toString(),curso.getText().toString(),
                                 empresa.getText().toString(),cargo.getText().toString(),periodo.getText().toString(),idioma1.getText().toString(),idioma2.getText().toString());
                         dao.insereCurriculo(curriculoAux);
-                        Toast.makeText(CurriculoAlunoActivity.this, spinnerGenero.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CurriculoAlunoActivity.this, "Curriculo Salvo", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

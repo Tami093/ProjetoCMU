@@ -35,7 +35,8 @@ public class VagasDeEmpregoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vagas_de_emprego);
 
         intentLogin = getIntent();
-        idDoAluno = intentLogin.getLongExtra("idDoAluno",0);
+        String idAux = intentLogin.getStringExtra("idDoAluno");
+        idDoAluno = Long.parseLong(idAux);
 
         List<Fragment> fragments = new Vector<>();
         fragments.add(Fragment.instantiate(this, Fragment1VagasDeEmprego.class.getName()));
