@@ -43,6 +43,7 @@ public class TarefaLogin extends AsyncTask<String,String,String>{
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
       //  result= "Verificando informações";
+        msgProgresso.setText("Verificando informações ...");
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -58,8 +59,6 @@ public class TarefaLogin extends AsyncTask<String,String,String>{
     protected String doInBackground(String... params) {
         AlunoDAO alunoDAO = new AlunoDAO(context);
         String idAluno;
-
-        msgProgresso.setText("Verificando informações ...");
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
