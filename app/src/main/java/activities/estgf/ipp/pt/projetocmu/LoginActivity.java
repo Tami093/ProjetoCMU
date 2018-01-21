@@ -126,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             String idAluno;
                             loginTarefa = new TarefaLogin(msgProgresso,login, senha,LoginActivity.this);
+                            msgProgresso.setText("Verificando dados...");
                             idAluno= loginTarefa.execute(login.getText().toString(),senha.getText().toString()).get();
 
                             Intent vaiParaVagasActivity = new Intent(LoginActivity.this, VagasDeEmpregoActivity.class);
