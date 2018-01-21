@@ -52,10 +52,10 @@ public class LoginActivity extends AppCompatActivity {
         try {
             dao = new HelperDAO(this);
             conn = dao.getReadableDatabase();
-            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            //AlertDialog.Builder dlg = new AlertDialog.Builder(this);
             //dlg.setMessage("Conexao criada com sucesso!");
-            dlg.setNeutralButton("OK",null);
-            dlg.show();
+            //dlg.setNeutralButton("OK",null);
+            //dlg.show();
         }
         catch (SQLException ex){
             AlertDialog.Builder dlg = new AlertDialog.Builder(this);
