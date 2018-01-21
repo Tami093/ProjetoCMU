@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="activities.estgf.ipp.pt.projetocmu.LoginActivity"
     tools:ignore="Deprecated">
 
     <LinearLayout
@@ -14,6 +15,8 @@
         android:layout_height="wrap_content"
         tools:context="activities.estgf.ipp.pt.projetocmu.LoginActivity"
         android:orientation="vertical">
+
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,6 +30,25 @@
             android:layout_marginTop="13dp"
             android:gravity="center_horizontal"
             android:text="Portal de Estagio"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/login_progressBar_progressBar"/>
+            <TextView
+                android:id="@+id/login_mensagemRetorno_textView"
+                android:textColor="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:text="Aguarde" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

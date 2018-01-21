@@ -39,6 +39,7 @@ public class AlunoDAO {
     public long pegaIdAluno(String email, String senha){
         dao = new HelperDAO(contexto);
 
+
         Cursor c =  dao.getReadableDatabase().rawQuery("SELECT * FROM ALUNO WHERE email = ? and senha = ?", new String[]{email,senha} );
         Aluno aluno = new Aluno();
 

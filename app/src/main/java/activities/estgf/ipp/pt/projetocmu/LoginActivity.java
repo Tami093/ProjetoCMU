@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ import android.database.*;
 
 //import java.util.logging.Logger;
 
+import java.util.concurrent.ExecutionException;
+
 import activities.estgf.ipp.pt.projetocmu.dao.AlunoDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.EmpresaDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.HelperDAO;
@@ -27,25 +30,27 @@ import activities.estgf.ipp.pt.projetocmu.dao.VagaDAO;
 import activities.estgf.ipp.pt.projetocmu.fragments.Fragment2MapaDoVagasDeEmprego;
 import activities.estgf.ipp.pt.projetocmu.fragments.Fragment2VagasDeEmprego;
 import activities.estgf.ipp.pt.projetocmu.modelo.Empresa;
+import android.app.ProgressDialog;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private TextView textoSeparadorOu;
+    private TextView textoSeparadorOu ,msgProgresso;
     private EditText login, senha;
     private RadioGroup radioGroupAlunoEmpresa;
     private RadioButton alunoRadio, empresaRadio;
     private Button botaoFazerLogin, botaoEsqueceuSenha, botaoRegistrar, inserirDadosBanco;
-
-
+    private ProgressBar progressBarLogin;
     private HelperDAO dao;
     private SQLiteDatabase conn;
+
+    private TarefaLogin loginTarefa;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        getSupportActionBar().setTitle("");
 
         try {
             dao = new HelperDAO(this);
@@ -73,6 +78,11 @@ public class LoginActivity extends AppCompatActivity {
         // Preciso chamar o radioGroup aqui em cima para que dentro da funcao do botao login eu consiga ver qual o item selecionado
         radioGroupAlunoEmpresa = (RadioGroup) findViewById(R.id.login_radioGroup_radioGroup);
 
+        msgProgresso = (TextView) findViewById(R.id.login_mensagemRetorno_textView);
+        progressBarLogin = (ProgressBar)findViewById(R.id.login_progressBar_progressBar);
+        progressBarLogin.setVisibility(View.INVISIBLE);
+        msgProgresso.setVisibility(View.INVISIBLE);
+
         /* --Funcao para ver oq q rola quando clicar no radio escolhido! (Estava utulizando para teste) */
         radioGroupAlunoEmpresa.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -94,8 +104,12 @@ public class LoginActivity extends AppCompatActivity {
         //Botao Login
         botaoFazerLogin = (Button) findViewById(R.id.login_botaoLogin_button);
         botaoFazerLogin.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+
+
+
                 int idRadioSelecionado = radioGroupAlunoEmpresa.getCheckedRadioButtonId();
                 int numeroAuxRadio = 0; // 0 = aluno (padrao) . 1 = empresa.
 
@@ -111,12 +125,28 @@ public class LoginActivity extends AppCompatActivity {
                     AlunoDAO alunoDAO = new AlunoDAO(LoginActivity.this);
 
                     if(alunoDAO.existeAluno(login.getText().toString(), senha.getText().toString())){
-                        long idAluno;
-                        idAluno = alunoDAO.pegaIdAluno(login.getText().toString(), senha.getText().toString());
+                        // idAluno = alunoDAO.pegaIdAluno(login.getText().toString(), senha.getText().toString());
+                        progressBarLogin.setVisibility(View.VISIBLE);
+                        msgProgresso.setVisibility(View.VISIBLE);
+                        msgProgresso.setText("Aguarde ...");
+                        try {
+                             wait();
 
-                        Intent vaiParaVagasActivity = new Intent(LoginActivity.this, VagasDeEmpregoActivity.class);
-                        vaiParaVagasActivity.putExtra("idDoAluno",idAluno);
-                        startActivity(vaiParaVagasActivity);
+                            String idAluno;
+                            loginTarefa = new TarefaLogin(progressBarLogin,login, senha,LoginActivity.this);
+                            idAluno= loginTarefa.execute(login.getText().toString(),senha.getText().toString()).get();
+                            msgProgresso.setVisibility(View.GONE);
+                            progressBarLogin.setVisibility(View.GONE);
+
+                            Intent vaiParaVagasActivity = new Intent(LoginActivity.this, VagasDeEmpregoActivity.class);
+                            vaiParaVagasActivity.putExtra("idDoAluno",idAluno);
+                            startActivity(vaiParaVagasActivity);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                     else{
                         Toast.makeText(LoginActivity.this,"Usuario ou Senha invalidos!", Toast.LENGTH_LONG).show();
@@ -143,7 +173,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         //Botao Esqueceu a senha
         botaoEsqueceuSenha = (Button) findViewById(R.id.login_botaoEsqueceuSenha_button);
         botaoEsqueceuSenha.setOnClickListener(new View.OnClickListener() {
@@ -166,7 +195,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    private void exibiProgresso(boolean statusProgressBar, boolean statusMensagem){
+        if (statusProgressBar == true ){
+            progressBarLogin.setVisibility(View.VISIBLE);
+        }else{
+            progressBarLogin.setVisibility(View.GONE);
+        }
 
+        if (statusMensagem == true ){
+            msgProgresso.setVisibility(View.VISIBLE);
+        }else{
+            msgProgresso.setVisibility(View.GONE);
+        }
+
+    }
     /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
