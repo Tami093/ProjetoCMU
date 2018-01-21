@@ -27,31 +27,17 @@ public class Fragment2MapaDoVagasDeEmprego extends SupportMapFragment implements
         super.onCreate(bundle);
         getMapAsync(this);
 
-        /*
-           super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment2_mapa_do_vagas_de_emprego);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.fragment2MapaVagas_mapa_fragment);
-        mapFragment.getMapAsync(this);
-        */
-
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         LatLng posicaoEscolhida = pegaCoodernadaDoEndereco("Rua Vergueiro 3185, Vila Mariana, Sao Paulo");
 
-        if(posicaoEscolhida != null){
+        if (posicaoEscolhida != null) {
             CameraUpdate update = CameraUpdateFactory.newLatLngZoom(posicaoEscolhida, 17);
             googleMap.moveCamera(update);
         }
 
-
-        // Add a marker in Sydney and move the camera
-        //LatLng sydney = new LatLng(-34, 151);
-        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
 

@@ -66,7 +66,6 @@ public class Framgent1AlunosCandidatos extends Fragment {
                 CurriculoDao curriculoDao = new CurriculoDao(getContext());
                 Curriculo curriculo = new Curriculo();
 
-                //Toast.makeText(getContext(), "Clicou no Aluno : " + aluno, Toast.LENGTH_SHORT).show();
                 AlunosCandidatosActivity alunosCandidatosActivity = (AlunosCandidatosActivity) getActivity();
                 alunosCandidatosActivity.selecionaAluno(curriculoDao.existeCurriculo(aluno.getIdAluno()));
 
@@ -78,7 +77,9 @@ public class Framgent1AlunosCandidatos extends Fragment {
         return view;
     }
 
-    //https://pt.stackoverflow.com/questions/95433/m%C3%A9todo-oncreatecontextmenu-de-um-fragment-chama-o-m%C3%A9todo-oncontextitemselected-d (Site que achei)
+    /* Site que achei
+       https://pt.stackoverflow.com/questions/95433/m%C3%A9todo-oncreatecontextmenu-de-um-fragment-chama-o-m%C3%A9todo-oncontextitemselected-d
+    */
     //Valores que irao aparecer ao segurar no aluno
     //Nao esquecer de chamar a funcao registerForContextMenu no onCreate, pois se n tiver nao ira apracer o menu
     @Override
@@ -100,8 +101,6 @@ public class Framgent1AlunosCandidatos extends Fragment {
 
         switch (item.getItemId()) {
             case 0:
-                //Toast.makeText(getContext(),"Tocou no Ligar " + aluno.getNome(),Toast.LENGTH_LONG).show();
-
                 //Ligar
                 if(ActivityCompat.checkSelfPermission(getContext() , Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
                     ActivityCompat.requestPermissions(getActivity(),
@@ -114,8 +113,6 @@ public class Framgent1AlunosCandidatos extends Fragment {
                 }
                 break;
             case 1:
-                //Toast.makeText(getContext(),"Tocou no SMS",Toast.LENGTH_LONG).show();
-
                 //Enviar SMS
                 Intent intetntSMS = new Intent(Intent.ACTION_VIEW);
                 intetntSMS.setData(Uri.parse("sms:" + curriculo.getTelefone()));
@@ -124,8 +121,6 @@ public class Framgent1AlunosCandidatos extends Fragment {
 
                 break;
             case 2:
-                //Toast.makeText(getContext(),"Tocou no Email",Toast.LENGTH_LONG).show();
-
                 //Enviar Email
                 Intent intentEmail = new Intent(Intent.ACTION_SENDTO);
                 intentEmail.setData(Uri.parse("mailto:")); // only email apps should handle this

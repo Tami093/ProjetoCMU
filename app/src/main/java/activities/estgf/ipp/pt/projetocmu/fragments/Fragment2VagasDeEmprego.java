@@ -39,7 +39,6 @@ public class Fragment2VagasDeEmprego extends Fragment implements OnMapReadyCallb
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //GoogleMap mGooglemap =
         ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.fragment2_mapa_fragment)).getMapAsync(this);
     }
 
@@ -59,8 +58,9 @@ public class Fragment2VagasDeEmprego extends Fragment implements OnMapReadyCallb
             if(coordenada != null){
                 MarkerOptions marcador = new MarkerOptions();
                 marcador.position(coordenada);
-                marcador.title(vaga.getNomeEmpresa());
-                marcador.snippet(String.valueOf(vaga.getSalario()) + " Euros");
+                marcador.title("Empresa " + vaga.getNomeEmpresa());
+                marcador.snippet("Vaga: " + vaga.getNomeVaga() + "/ Salario: "+ vaga.getSalario());
+                //marcador.snippet(String.valueOf(vaga.getSalario()) + " Euros");
                 googleMap.addMarker(marcador);
             }
         }

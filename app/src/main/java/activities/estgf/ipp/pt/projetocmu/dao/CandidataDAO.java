@@ -56,17 +56,50 @@ public class CandidataDAO {
                 dao.getReadableDatabase().rawQuery("SELECT * FROM CANDIDATA WHERE idVagaEmp = ?", new String[]{idEmpresa.toString()} );
         while (c.moveToNext()){
             long idAluno = c.getLong(c.getColumnIndex("idAluno"));
-/*
-            System.out.println("DENTRO DO DAO>>>>>>>");
-            System.out.println(idAluno);
-            System.out.println("<<<<<<<DENTRO DO DAO");
-*/
             listaIdsAlunos.add(idAluno);
         }
         c.close();
 
         return listaIdsAlunos;
     }
+
+
+    public void deletaAlunoAVaga (Long idAluno, Long idVaga){
+        dao = new HelperDAO(contexto);
+
+        long idCandidatado = 0;
+
+        Cursor c =
+                dao.getReadableDatabase().rawQuery("SELECT * FROM CANDIDATA WHERE idAluno = ? and idVagaEmp = ?", new String[]{idAluno.toString(),idVaga.toString()} );
+        while (c.moveToNext()){
+            idCandidatado = c.getLong(c.getColumnIndex("id"));
+        }
+        c.close();
+
+
+        String[] params = {String.valueOf(idCandidatado)};
+        dao.getWritableDatabase().delete("CANDIDATA", "id = ?" , params);
+    }
+
+    public  void insereCandidatura(Candidata candidata){
+        dao = new HelperDAO(contexto);
+        ContentValues dados = pegaDadosCandidata(candidata);
+
+        dao.getWritableDatabase().insert("CANDIDATA",null,dados);
+        dao.close();
+    }
+
+    public boolean alunoCandidatoAVaga (long idVagaEmp, long idAluno){
+        dao = new HelperDAO(contexto);
+        Cursor c = dao.getReadableDatabase().
+                rawQuery("SELECT * FROM CANDIDATA WHERE idVagaEmp = ? and idAluno = ?",
+                        new String[]{String.valueOf(idVagaEmp), String.valueOf(idAluno)} );
+        if(c.getCount() > 0){
+            return true;
+        }
+        return false;
+    }
+
     public ContentValues pegaDadosCandidata(Candidata candidata){
         ContentValues dadosCandidata = new ContentValues();
 
@@ -74,11 +107,5 @@ public class CandidataDAO {
         dadosCandidata.put("idVagaEmp",candidata.getIdVaga());
 
         return dadosCandidata;
-    }
-    public  void insereCandidatura(Candidata candidata){
-        dao = new HelperDAO(contexto);
-        ContentValues dados = pegaDadosCandidata(candidata);
-        dao.getWritableDatabase().insert("CANDIDATA",null,dados);
-        dao.close();
     }
 }

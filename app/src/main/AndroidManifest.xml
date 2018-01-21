@@ -46,7 +46,9 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".MainEmpresasActivity" />
-        <activity android:name=".AlunosCandidatosActivity"></activity>
+        <activity android:name=".AlunosCandidatosActivity" />
+        <activity android:name=".DetalhesDaVagaActivity" />
+        <activity android:name=".NovaVagaActivity"></activity>
     </application>
 
 </manifest>

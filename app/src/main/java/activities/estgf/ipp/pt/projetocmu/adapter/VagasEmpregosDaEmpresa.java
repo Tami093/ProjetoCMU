@@ -63,7 +63,6 @@ public class VagasEmpregosDaEmpresa extends RecyclerView.Adapter {
                 Intent vaiParaListaDeAlunos = new Intent( context, AlunosCandidatosActivity.class);
                 vaiParaListaDeAlunos.putExtra("listaIdsAlunos", ids);
                 context.startActivity(vaiParaListaDeAlunos);
-                //Toast.makeText(context, "TOCOU NO BOTAO", Toast.LENGTH_SHORT).show();
             }
         });
     }

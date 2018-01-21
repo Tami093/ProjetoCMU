@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="activities.estgf.ipp.pt.projetocmu.NovaVagaActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardElevation="6dp"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="activities.estgf.ipp.pt.projetocmu.CurriculoAlunoActivity"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5sp"
+                android:gravity="center"
+                android:layout_marginLeft="2sp">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="5sp"
+                    android:hint="Criacao Nova Vaga " />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:src="@drawable/ic_work_black_24dp"
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:hint="Digite o nome da Vaga"
+                    android:id="@+id/novaVaga_nomeVaga_editText" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginTop="5sp"
+                    android:src="@drawable/ic_work_black_24dp"/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:hint="Digite o Tipo de Vaga"
+                    android:id="@+id/novaVaga_tipoVaga_editText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:layout_marginTop="5sp"
+                    android:src="@drawable/ic_place_black_24dp"/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:hint="Digite o local de Trabalho"
+                    android:id="@+id/novaVaga_localTrabalho_editText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
+                    android:src="@drawable/ic_attach_money_black_24dp"
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2sp"
+                    android:textSize="14sp"
+                    android:hint="Digite o Salario"
+                    android:id="@+id/novaVaga_salario_editText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2sp"
+                android:layout_marginLeft="2sp"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <Button
+                    android:layout_width="220sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5sp"
+                    android:textStyle="bold"
+                    android:hint="Criar Vaga"
+                    android:id="@+id/novaVaga_criarVaga_button"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.v7.widget.CardView>

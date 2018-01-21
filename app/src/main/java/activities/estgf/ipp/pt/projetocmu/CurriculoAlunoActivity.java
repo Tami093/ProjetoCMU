@@ -55,11 +55,6 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
         final long idDoAluno = intentVagasDeEmprego.getLongExtra("idDoAluno", 0);
         final Curriculo curriculo = (Curriculo) intentVagasDeEmprego.getSerializableExtra("curriculo");
 
-        System.out.println("BBBBBBBBBBBBBBBBBBBBBB");
-        System.out.println(idDoAluno);
-        System.out.println("BBBBBBBBBBBBBBBBBBBBBB");
-
-
         nome = (EditText) findViewById(R.id.curriculo_nomeAluno_editText);
         dataAniversario = (TextView) findViewById(R.id.curriculo_dataAniversario_textView);
         spinnerGenero = (Spinner) findViewById(R.id.curriculo_genero_spinner);
@@ -108,6 +103,7 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
 
         // Calendario data nascimento
         dataDeAniversario();
+
         //botao salvar onClick
         nomeEvalido = Pattern.matches("^[A-Za-z\\s]+(\\s[A-Za-z]+)$",nome.getText());
         emailEvalido = Pattern.matches("\"^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@\"\n" +
@@ -157,16 +153,13 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
-    public void  setSpinerText(Spinner spinnerGenero, String genero,ArrayAdapter dados){
 
+    public void  setSpinerText(Spinner spinnerGenero, String genero,ArrayAdapter dados){
         int posicaoArray = 0;
 
         for(int i=0; (i <= dados.getCount()-1) ; i++){
-
             if(dados.getItem(i).equals(genero)){
-
                 posicaoArray = i;
                 break;
             }else{
@@ -209,7 +202,6 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
     }
 
     public Curriculo setandoCurriculoAtualizado (Curriculo curriculo){
-
         curriculo.setNome(nome.getText().toString());
         curriculo.setDataNasc(dataAniversario.getText().toString());
         curriculo.setSexo(spinnerGenero.getSelectedItem().toString());
@@ -223,7 +215,6 @@ public class CurriculoAlunoActivity extends AppCompatActivity implements OnItemS
         curriculo.setPerido(periodo.getText().toString());
         curriculo.setIdioma1(idioma1.getText().toString());
         curriculo.setIdioma2(idioma2.getText().toString());
-
         return curriculo;
     }
 
