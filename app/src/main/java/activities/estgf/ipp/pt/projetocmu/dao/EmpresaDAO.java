@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import activities.estgf.ipp.pt.projetocmu.modelo.Aluno;
 import activities.estgf.ipp.pt.projetocmu.modelo.Empresa;
 
 public class EmpresaDAO {
@@ -115,5 +116,7 @@ public class EmpresaDAO {
         c.close();
         dao.close();
     }
+
+
 
 }

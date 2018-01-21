@@ -5,12 +5,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -23,14 +20,13 @@ import android.database.*;
 
 import java.util.concurrent.ExecutionException;
 
+import activities.estgf.ipp.pt.projetocmu.asyncTask.TarefaLogin;
+import activities.estgf.ipp.pt.projetocmu.asyncTask.TarefaLoginEmpresa;
 import activities.estgf.ipp.pt.projetocmu.dao.AlunoDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.EmpresaDAO;
 import activities.estgf.ipp.pt.projetocmu.dao.HelperDAO;
-import activities.estgf.ipp.pt.projetocmu.dao.VagaDAO;
-import activities.estgf.ipp.pt.projetocmu.fragments.Fragment2MapaDoVagasDeEmprego;
-import activities.estgf.ipp.pt.projetocmu.fragments.Fragment2VagasDeEmprego;
 import activities.estgf.ipp.pt.projetocmu.modelo.Empresa;
-import android.app.ProgressDialog;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -39,11 +35,12 @@ public class LoginActivity extends AppCompatActivity {
     private RadioGroup radioGroupAlunoEmpresa;
     private RadioButton alunoRadio, empresaRadio;
     private Button botaoFazerLogin, botaoEsqueceuSenha, botaoRegistrar, inserirDadosBanco;
-    private ProgressBar progressBarLogin;
     private HelperDAO dao;
     private SQLiteDatabase conn;
 
     private TarefaLogin loginTarefa;
+    private TarefaLoginEmpresa taskLoginEmpresa;
+
 
 
     @Override
@@ -78,10 +75,9 @@ public class LoginActivity extends AppCompatActivity {
         // Preciso chamar o radioGroup aqui em cima para que dentro da funcao do botao login eu consiga ver qual o item selecionado
         radioGroupAlunoEmpresa = (RadioGroup) findViewById(R.id.login_radioGroup_radioGroup);
 
-        msgProgresso = (TextView) findViewById(R.id.login_mensagemRetorno_textView);
-        progressBarLogin = (ProgressBar)findViewById(R.id.login_progressBar_progressBar);
-        progressBarLogin.setVisibility(View.INVISIBLE);
-        msgProgresso.setVisibility(View.INVISIBLE);
+        msgProgresso = (TextView) findViewById(R.id.login_msgProgresso_textView);
+
+
 
         /* --Funcao para ver oq q rola quando clicar no radio escolhido! (Estava utulizando para teste) */
         radioGroupAlunoEmpresa.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -126,17 +122,11 @@ public class LoginActivity extends AppCompatActivity {
 
                     if(alunoDAO.existeAluno(login.getText().toString(), senha.getText().toString())){
                         // idAluno = alunoDAO.pegaIdAluno(login.getText().toString(), senha.getText().toString());
-                        progressBarLogin.setVisibility(View.VISIBLE);
-                        msgProgresso.setVisibility(View.VISIBLE);
-                        msgProgresso.setText("Aguarde ...");
-                        try {
-                             wait();
 
+                        try {
                             String idAluno;
-                            loginTarefa = new TarefaLogin(progressBarLogin,login, senha,LoginActivity.this);
+                            loginTarefa = new TarefaLogin(msgProgresso,login, senha,LoginActivity.this);
                             idAluno= loginTarefa.execute(login.getText().toString(),senha.getText().toString()).get();
-                            msgProgresso.setVisibility(View.GONE);
-                            progressBarLogin.setVisibility(View.GONE);
 
                             Intent vaiParaVagasActivity = new Intent(LoginActivity.this, VagasDeEmpregoActivity.class);
                             vaiParaVagasActivity.putExtra("idDoAluno",idAluno);
@@ -151,20 +141,22 @@ public class LoginActivity extends AppCompatActivity {
                     else{
                         Toast.makeText(LoginActivity.this,"Usuario ou Senha invalidos!", Toast.LENGTH_LONG).show();
                     }
-
-
                 }else if(idRadioSelecionado ==  empresaRadio.getId()){
+                    msgProgresso.setText("Verificando dados....");
                     EmpresaDAO empresaDAO = new EmpresaDAO(LoginActivity.this);
-
                     //Verifica se a empresa esta cadastrada
                     if(empresaDAO.ehEmpresaCadastrada(login.getText().toString(), senha.getText().toString())){
                         Empresa empresa = new Empresa();
+                        taskLoginEmpresa = new TarefaLoginEmpresa(LoginActivity.this,msgProgresso);
+                        taskLoginEmpresa.execute();
                         empresa = empresaDAO.pegaEmpresa(login.getText().toString(), senha.getText().toString());
 
                         Intent vaiParaMainEmpresasActivy = new Intent(LoginActivity.this, MainEmpresasActivity.class);
                         vaiParaMainEmpresasActivy.putExtra("idDaEmpresa",empresa.getId());
                         vaiParaMainEmpresasActivy.putExtra("nomeEmpresa",empresa.getNome());
+
                         startActivity(vaiParaMainEmpresasActivy);
+
                         //Toast.makeText(LoginActivity.this,"!!Esta Cadastrado No Banco de Dados!!", Toast.LENGTH_LONG).show();
                     }else{
                         Toast.makeText(LoginActivity.this,"Usuario ou Senha invalidos!", Toast.LENGTH_LONG).show();
@@ -196,20 +188,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    private void exibiProgresso(boolean statusProgressBar, boolean statusMensagem){
-        if (statusProgressBar == true ){
-            progressBarLogin.setVisibility(View.VISIBLE);
-        }else{
-            progressBarLogin.setVisibility(View.GONE);
-        }
 
-        if (statusMensagem == true ){
-            msgProgresso.setVisibility(View.VISIBLE);
-        }else{
-            msgProgresso.setVisibility(View.GONE);
-        }
-
-    }
     /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
