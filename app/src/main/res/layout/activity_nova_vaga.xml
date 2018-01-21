@@ -49,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5sp"
-                    android:src="@drawable/ic_person_black_24dp"
+                    android:src="@drawable/ic_work_black_24dp"
                     android:layout_gravity="center"/>
                 <EditText
                     android:layout_width="300sp"
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5sp"
                     android:layout_marginTop="5sp"
-                    android:src="@drawable/ic_email_black_24dp"/>
+                    android:src="@drawable/ic_work_black_24dp"/>
                 <EditText
                     android:layout_width="300sp"
                     android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5sp"
-                    android:src="@drawable/ic_work_black_24dp"
+                    android:src="@drawable/ic_attach_money_black_24dp"
                     android:layout_gravity="center"/>
                 <EditText
                     android:layout_width="300sp"

@@ -68,26 +68,16 @@ public class VagasEmpregoAdapter extends BaseAdapter {
         quantidadeSalario.setText(vaga.getSalario());
 
         Button botaoCandidatar = (Button) viewInflate.findViewById(R.id.listItem_botaoCandidatar_button);
-        if(candidataDAO.alunoCandidatoAVaga(vaga.getId(), idAluno)){
-            System.out.println("PASSOU NO TRUE");
-            botaoCandidatar.setClickable(false);
-            botaoCandidatar.setBackgroundColor(Color.parseColor("#ffffff"));
-            botaoCandidatar.setText("Ja está candidatado");
-        }else{
-            botaoCandidatarse = true;
-        }
-        if(botaoCandidatarse) {
-            botaoCandidatar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //Toast.makeText(context,"Tocou no Botao",Toast.LENGTH_LONG).show();
-                    Intent vaiParaDetalhesVaga = new Intent(context, DetalhesDaVagaActivity.class);
-                    vaiParaDetalhesVaga.putExtra("vaga", vaga);
-                    vaiParaDetalhesVaga.putExtra("idDoAluno", idAluno);
-                    context.startActivity(vaiParaDetalhesVaga);
-                }
-            });
-        }
+//        if(candidataDAO.alunoCandidatoAVaga(vaga.getId(), idAluno)){
+        botaoCandidatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent vaiParaDetalhesVaga = new Intent(context, DetalhesDaVagaActivity.class);
+                vaiParaDetalhesVaga.putExtra("vaga", vaga);
+                vaiParaDetalhesVaga.putExtra("idDoAluno", idAluno);
+                context.startActivity(vaiParaDetalhesVaga);
+            }
+        });
         return viewInflate;
     }
 

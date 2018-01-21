@@ -69,7 +69,7 @@ public class CadastroActivity extends AppCompatActivity {
                     }
 
                 }else{
-                    Toast.makeText(CadastroActivity.this, "Sertifique que digitou a senha corretamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadastroActivity.this, "Certifique que digitou a senha corretamente", Toast.LENGTH_SHORT).show();
                 }
 
             }

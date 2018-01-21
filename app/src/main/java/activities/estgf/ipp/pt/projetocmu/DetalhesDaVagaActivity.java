@@ -21,7 +21,7 @@ import activities.estgf.ipp.pt.projetocmu.modelo.Vaga;
 public class DetalhesDaVagaActivity extends AppCompatActivity {
 
     private TextView nomeVaga, nomeEmpresa, localTrabalho, tipoDaVaga, salario;
-    private Button botaoCandidatar;
+    private Button botaoCandidatar, botaoDesistirDaVaga;
     private Intent intentVagasDeEmprego;
     private int notificationId;
 
@@ -37,6 +37,9 @@ public class DetalhesDaVagaActivity extends AppCompatActivity {
         AlunoDAO alunoDAO = new AlunoDAO(this);
         final Aluno aluno = alunoDAO.pegarUnicoAluno(idAluno);
 
+        final CandidataDAO candidataDAO = new CandidataDAO(this);
+
+
         nomeVaga      = (TextView) findViewById(R.id.detalheVaga_nomeVaga_textView);
         nomeEmpresa   = (TextView) findViewById(R.id.detalheVaga_nomeEmpresa_textView);
         localTrabalho = (TextView) findViewById(R.id.detalheVaga_localTrabalho_textView);
@@ -45,7 +48,17 @@ public class DetalhesDaVagaActivity extends AppCompatActivity {
 
         preencheCampos(vaga);
 
-        botaoCandidatar = (Button)findViewById(R.id.detalheVaga_botaoCandidatar_button);
+        botaoCandidatar = (Button) findViewById(R.id.detalheVaga_botaoCandidatar_button);
+        botaoDesistirDaVaga = (Button) findViewById(R.id.detalheVaga_botaoDesistirDaVaga_button);
+
+        if(candidataDAO.alunoCandidatoAVaga(vaga.getId(), idAluno)) {
+            botaoCandidatar.setVisibility(View.INVISIBLE);
+            botaoDesistirDaVaga.setVisibility(View.VISIBLE);
+        }else {
+            botaoCandidatar.setVisibility(View.VISIBLE);
+            botaoDesistirDaVaga.setVisibility(View.INVISIBLE);
+        }
+
         botaoCandidatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +72,16 @@ public class DetalhesDaVagaActivity extends AppCompatActivity {
                 enviarNotificacao(vaga.getNomeVaga(), aluno.getNome());
 
                 Toast.makeText(DetalhesDaVagaActivity.this,"Candidato com sucesso", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+
+        botaoDesistirDaVaga.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                candidataDAO.deletaAlunoAVaga(idAluno,vaga.getId());
+                Toast.makeText(DetalhesDaVagaActivity.this,"Desistencia com sucesso ", Toast.LENGTH_LONG).show();
+
                 finish();
             }
         });

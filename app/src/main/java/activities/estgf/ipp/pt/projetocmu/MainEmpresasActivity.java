@@ -28,7 +28,9 @@ public class MainEmpresasActivity extends AppCompatActivity {
         idDaEmpresa = intent.getLongExtra("idDaEmpresa",0);
         nomeEmpresa = intent.getStringExtra("nomeEmpresa");
 
-        //http://blog.alura.com.br/criando-listas-com-recyclerview/  (Pagina sobre recycleView)
+        /*  Pagina sobre recycleView
+            http://blog.alura.com.br/criando-listas-com-recyclerview/
+        */
         carregaListaVagas(idDaEmpresa);
 
     }
@@ -60,18 +62,11 @@ public class MainEmpresasActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menuVagasEmpresas_criarNovaVaga_item:
-                //Toast.makeText(VagasDeEmpregoActivity.this, "Tocou em curriculo", Toast.LENGTH_SHORT).show();
                 Intent vaiParaCriarVaga = new Intent(this, NovaVagaActivity.class);
-                    vaiParaCriarVaga.putExtra("idEmpresa", idDaEmpresa);
-                    vaiParaCriarVaga.putExtra("nomeEmpresa", nomeEmpresa);
+                vaiParaCriarVaga.putExtra("idEmpresa", idDaEmpresa);
+                vaiParaCriarVaga.putExtra("nomeEmpresa", nomeEmpresa);
                 startActivity(vaiParaCriarVaga);
                 break;
-            /*
-            case R.id.menu_baixarProvas:
-                Intent vaiParaProvas = new Intent(this, ProvasActivity.class);
-                startActivity(vaiParaProvas);
-                break;
-            */
         }
         return super.onOptionsItemSelected(item);
     }

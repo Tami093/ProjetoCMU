@@ -52,10 +52,10 @@ public class AlunosCandidatosAdapter extends BaseAdapter {
         }
 
         TextView nomeAluno = (TextView) viewInflate.findViewById(R.id.listItem_nomeDoAlunoCandidato_textView);
-        nomeAluno.setText(aluno.getNome());
+        nomeAluno.setText(curriculo.getNome());
 
         TextView emailAluno = (TextView) viewInflate.findViewById(R.id.listItem_emailAlunoCandidato_textView);
-        emailAluno.setText(aluno.getEmail());
+        emailAluno.setText(curriculo.getEmail());
 
         TextView telefoneAluno = (TextView) viewInflate.findViewById(R.id.listItem_telefoneAlunoCandidato_textView);
         telefoneAluno.setText(curriculo.getTelefone());
